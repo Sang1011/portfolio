@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
+@theme {
+  --color-blue-electric: #1400FF;
+  --color-blue-bright: #0A0AFF;
+  --color-blue-soft: #8C8CFF;
+  --color-blue-muted: #4040CC;
+  --color-black-pure: #0D0D0D;
+  --color-black-deep: #111111;
+  --color-black-panel: #1A1A1A;
+
+  --font-family-sans: var(--font-space-grotesk), sans-serif;
+  --font-family-mono: var(--font-ibm-plex-mono), monospace;
+
+  --font-size-display-xl: clamp(4rem, 10vw, 10rem);
+  --font-size-display-lg: clamp(2.5rem, 6vw, 6rem);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blue-electric: #1400FF;
+  --blue-soft: #8C8CFF;
+  --blue-muted: #4040CC;
+  --black-pure: #0D0D0D;
+  --black-deep: #111111;
+  --black-panel: #1A1A1A;
+  --white: #FFFFFF;
+
+  --font-sans: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--black-pure);
+  color: var(--white);
+  font-family: var(--font-sans);
+  cursor: crosshair;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black-pure);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue-electric);
+}
+
+/* Utility classes — plain CSS, no @apply */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.text-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-soft);
+}
+
+.border-grid {
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
