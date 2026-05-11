@@ -5,17 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { projects } from '@/lib/data'
 import type { ProjectRole } from '@/lib/data'
+import { useTranslation } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
-
-const FILTERS: { label: string; value: ProjectRole | 'All' }[] = [
-    { label: 'All', value: 'All' },
-    { label: 'Frontend', value: 'FE' },
-    { label: 'Backend', value: 'BE' },
-    { label: 'Mobile', value: 'Mobile' },
-    { label: 'Fullstack', value: 'Fullstack' },
-]
 
 const STATUS_COLOR: Record<string, string> = {
     live: '#1400FF',
@@ -23,9 +16,17 @@ const STATUS_COLOR: Record<string, string> = {
     private: 'rgba(0,0,0,0.35)',
 }
 
-function ProjectRow({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectRow({ project, index, t, messages }: {
+    project: typeof projects[0]
+    index: number
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    t: any
+    messages: ReturnType<typeof useTranslation>['messages']
+}) {
     const [hovered, setHovered] = useState(false)
     const [imgPos, setImgPos] = useState({ x: 0, y: 0 })
+
+    const projectData = messages.projects.find((p: { id: string }) => p.id === project.id)
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect()
@@ -39,7 +40,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.07 }}
         >
-            <Link href={`/projects/${project.id}`} style={{ textDecoration: 'none' }}>
+            <Link href={`/projects/${project.slug}`} style={{ textDecoration: 'none' }}>
                 <div
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
@@ -60,7 +61,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                     {/* index */}
                     <span style={{
                         ...mono, fontSize: 10, letterSpacing: '0.3em',
-                        color: hovered ? '#1400FF' : 'rgba(0,0,0,0.25)',
+                        color: hovered ? '#1400FF' : 'rgba(0,0,0,0.48)',
                         transition: 'color 0.2s',
                     }}>
                         [{String(index + 1).padStart(2, '0')}]
@@ -79,27 +80,27 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                             </h3>
                             {/* role badge */}
                             <span style={{
-                                ...mono, fontSize: 8, letterSpacing: '0.35em',
+                                ...mono, fontSize: 10, letterSpacing: '0.35em',
                                 textTransform: 'uppercase',
                                 color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)',
                                 padding: '2px 7px',
                             }}>
-                                {project.role}
+                                {t(`ui.project.role.${project.role}`)}
                             </span>
                         </div>
 
                         <p style={{
-                            ...mono, fontSize: 11, color: 'rgba(0,0,0,0.4)',
+                            ...mono, fontSize: 11, color: 'rgba(0,0,0,0.6)',
                             margin: '0 0 12px', lineHeight: 1.5,
                         }}>
-                            {project.subtitle}
+                            {projectData?.subtitle ?? project.subtitle}
                         </p>
 
                         {/* tech tags */}
                         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                             {project.tech.slice(0, 5).map(t => (
                                 <span key={t} style={{
-                                    ...mono, fontSize: 8, letterSpacing: '0.25em',
+                                    ...mono, fontSize: 10, letterSpacing: '0.25em',
                                     textTransform: 'uppercase', color: 'rgba(0,0,0,0.32)',
                                     border: '1px solid rgba(0,0,0,0.12)', padding: '3px 7px',
                                 }}>
@@ -111,19 +112,19 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
 
                     {/* right: year + status */}
                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                        <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.3)', marginBottom: 6 }}>
+                        <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)', marginBottom: 6 }}>
                             {project.year}
                         </div>
                         <div style={{
-                            ...mono, fontSize: 8, letterSpacing: '0.3em',
+                            ...mono, fontSize: 10, letterSpacing: '0.3em',
                             textTransform: 'uppercase',
                             color: STATUS_COLOR[project.status],
                         }}>
-                            {project.status === 'live' ? '● Live' : project.status === 'ui-only' ? '○ UI Only' : '○ Private'}
+                            {t(project.status === 'live' ? 'ui.project.statusLive' : project.status === 'private' ? 'ui.project.statusPrivate' : 'ui.project.statusUiOnly')}
                         </div>
                     </div>
 
-                    {/* hover image preview — follows cursor */}
+                    {/* hover image preview */}
                     <AnimatePresence>
                         {hovered && project.thumbnail && (
                             <motion.div
@@ -158,7 +159,16 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
     )
 }
 
+const FILTER_KEYS = {
+    All: 'ui.projects.filterAll',
+    FE: 'ui.projects.filterFE',
+    BE: 'ui.projects.filterBE',
+    Mobile: 'ui.projects.filterMobile',
+    Fullstack: 'ui.projects.filterFullstack',
+} as const
+
 export default function ProjectsPage() {
+    const { t, messages } = useTranslation()
     const [filter, setFilter] = useState<ProjectRole | 'All'>('All')
 
     const filtered = filter === 'All'
@@ -177,10 +187,10 @@ export default function ProjectsPage() {
                     style={{ marginBottom: 64 }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-                        <span style={{ ...mono, fontSize: 9, letterSpacing: '0.4em', color: '#1400FF' }}>01</span>
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', color: '#1400FF' }}>01</span>
                         <div style={{ width: 24, height: 1, background: '#1400FF' }} />
-                        <span style={{ ...mono, fontSize: 9, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
-                            Selected Work
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
+                            {t('ui.projects.sectionLabel')}
                         </span>
                     </div>
 
@@ -195,24 +205,24 @@ export default function ProjectsPage() {
 
                         {/* filter bar */}
                         <div style={{ display: 'flex', gap: 6, flexShrink: 0, paddingBottom: 4 }}>
-                            {FILTERS.map(f => {
-                                const active = filter === f.value
+                            {(Object.keys(FILTER_KEYS) as Array<keyof typeof FILTER_KEYS>).map(f => {
+                                const active = filter === f
                                 return (
                                     <button
-                                        key={f.value}
-                                        onClick={() => setFilter(f.value)}
+                                        key={f}
+                                        onClick={() => setFilter(f)}
                                         style={{
-                                            ...mono, fontSize: 9, letterSpacing: '0.3em',
+                                            ...mono, fontSize: 10, letterSpacing: '0.3em',
                                             textTransform: 'uppercase',
                                             padding: '6px 14px',
                                             border: `1px solid ${active ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
                                             background: active ? '#1400FF' : 'transparent',
-                                            color: active ? '#fff' : 'rgba(0,0,0,0.4)',
+                                            color: active ? '#fff' : 'rgba(0,0,0,0.6)',
                                             cursor: 'pointer',
                                             transition: 'all 0.16s',
                                         }}
                                     >
-                                        {f.label}
+                                        {t(FILTER_KEYS[f])}
                                     </button>
                                 )
                             })}
@@ -222,8 +232,8 @@ export default function ProjectsPage() {
 
                 {/* project count */}
                 <div style={{
-                    ...mono, fontSize: 9, letterSpacing: '0.4em', textTransform: 'uppercase',
-                    color: 'rgba(0,0,0,0.28)', marginBottom: 8,
+                    ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase',
+                    color: 'rgba(0,0,0,0.5)', marginBottom: 8,
                     borderTop: '1px solid rgba(0,0,0,0.1)', paddingTop: 16,
                 }}>
                     {filtered.length} project{filtered.length !== 1 ? 's' : ''}
@@ -239,7 +249,7 @@ export default function ProjectsPage() {
                         transition={{ duration: 0.2 }}
                     >
                         {filtered.map((p, i) => (
-                            <ProjectRow key={p.id} project={p} index={i} />
+                            <ProjectRow key={p.id} project={p} index={i} t={t} messages={messages} />
                         ))}
                     </motion.div>
                 </AnimatePresence>

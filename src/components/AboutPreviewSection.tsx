@@ -3,11 +3,14 @@
 import { personal, TAGS } from '@/lib/data'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useTranslation } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
 
 export default function AboutPreviewSection() {
+    const { t, messages } = useTranslation()
+
     return (
         <section
             id="about-preview"
@@ -44,7 +47,7 @@ export default function AboutPreviewSection() {
                         <div key={i} style={{ position: 'absolute', width: 16, height: 16, ...s }} />
                     ))}
                     <img
-                        src="/avatar-placeholder.jpg"
+                        src="/avatar.jpg"
                         alt={personal.name}
                         style={{
                             width: '100%',
@@ -63,7 +66,7 @@ export default function AboutPreviewSection() {
                         <span style={{ ...sans, fontSize: 13, fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>
                             {personal.name}
                         </span>
-                        <span style={{ ...mono, fontSize: 8, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>
                             .DEV
                         </span>
                     </div>
@@ -77,10 +80,10 @@ export default function AboutPreviewSection() {
                     transition={{ duration: 0.7 }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-                        <span style={{ ...mono, fontSize: 9, letterSpacing: '0.4em', color: '#1400FF' }}>02</span>
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', color: '#1400FF' }}>02</span>
                         <div style={{ width: 24, height: 1, background: '#1400FF' }} />
-                        <span style={{ ...mono, fontSize: 9, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
-                            About
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
+                            {t('ui.about.sectionLabel')}
                         </span>
                     </div>
 
@@ -93,13 +96,10 @@ export default function AboutPreviewSection() {
                         color: '#111',
                         margin: '0 0 24px',
                     }}>
-                        {personal.title}<br />
-                        <span style={{ color: '#1400FF' }}>
-                            {personal.focus}.
-                        </span>
+                        {t('personal.title')}<br />
                     </h2>
 
-                    {personal.bioArray.map((text) => (
+                    {messages.personal.bioArray.map((text: string) => (
                         <p
                             key={text}
                             style={{
@@ -116,13 +116,13 @@ export default function AboutPreviewSection() {
 
                     {/* quick stats */}
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, border: '1px solid rgba(0,0,0,0.1)', marginBottom: 32 }}>
-                        {personal.stats.map(({ label, value }) => (
+                        {messages.personal.stats.map(({ label, value }: { label: string; value: string }) => (
                             <div key={label} style={{
                                 padding: '14px 18px',
                                 borderBottom: '1px solid rgba(0,0,0,0.08)',
                                 borderRight: '1px solid rgba(0,0,0,0.08)',
                             }}>
-                                <div style={{ ...mono, fontSize: 8, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 5 }}>
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
                                     {label}
                                 </div>
                                 <div style={{ ...mono, fontSize: 11, color: '#111' }}>{value}</div>
@@ -133,10 +133,10 @@ export default function AboutPreviewSection() {
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 40 }}>
                         {TAGS.map(s => (
                             <span key={s} style={{
-                                ...mono, fontSize: 8, letterSpacing: '0.25em', textTransform: 'uppercase',
+                                ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
                                 padding: '5px 11px',
                                 border: '1px solid rgba(0,0,0,0.13)',
-                                color: 'rgba(0,0,0,0.4)',
+                                color: 'rgba(0,0,0,0.6)',
                             }}>
                                 {s}
                             </span>
@@ -153,7 +153,7 @@ export default function AboutPreviewSection() {
                                 display: 'inline-flex', alignItems: 'center', gap: 10,
                             }}
                         >
-                            <span>Full Profile</span>
+                            <span>{t('ui.about.fullProfile')}</span>
                             <span style={{ fontSize: 14 }}>→</span>
                         </motion.div>
                     </Link>

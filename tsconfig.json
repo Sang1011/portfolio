@@ -20,7 +20,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/lib/data": ["./src/lib/data/index.ts"]
+      "@/lib/data": ["./src/lib/data/index.ts"],
+      "@/lib/hooks": ["./src/lib/hooks/index.ts"],
+      "@/lib/i18n": ["./src/lib/i18n/index.ts"],
+      "@/language/*": ["./language/*"]
     }
   },
   "include": [
@@ -29,7 +32,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "**/*.json"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,183 @@
+{
+  "personal": {
+    "title": "Lập trình viên Fullstack",
+    "bio": "Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT TP.HCM, tốt nghiệp tháng 4/2026 với GPA 3.5/4.0. Lập trình viên fullstack có kinh nghiệm thực tế ở cả hai phía — React, Next.js, TypeScript ở frontend và NestJS, ASP.NET Core, MongoDB ở backend. Từng xây dựng dashboard logistics thời gian thực, editor sơ đồ chỗ ngồi đến RESTful API với JWT, WebSocket và triển khai Docker.",
+    "bioArray": [
+      "Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT TP.HCM, tốt nghiệp tháng 4/2026 với GPA 3.5/4.0. Lập trình viên fullstack tự tin ở cả hai phía — React, Next.js ở frontend, NestJS và ASP.NET Core ở backend.",
+      "Từng xây dựng dashboard logistics thời gian thực, editor sơ đồ chỗ ngồi đến RESTful API với JWT auth, WebSocket notification và triển khai Docker."
+    ],
+    "available": "Đang tìm việc",
+    "stats": [
+      { "label": "Vị trí", "value": "Fullstack" },
+      { "label": "Địa điểm", "value": "TP. Hồ Chí Minh" },
+      { "label": "Trạng thái", "value": "Đang tìm việc" },
+      { "label": "Stack", "value": "React · NextJS · NestJS · ASP.NET" }
+    ],
+    "handle": "@sang1011",
+    "location": "TP. Hồ Chí Minh, VN"
+  },
+  "skillGroups": [
+    { "label": "Frontend" },
+    { "label": "Backend" },
+    { "label": "Cơ sở dữ liệu" },
+    { "label": "Công cụ & Cloud" }
+  ],
+  "education": {
+    "degree": "Cử nhân Kỹ thuật Phần mềm",
+    "major": "Chuyên ngành phát triển .NET",
+    "school": "Đại học FPT — Cơ sở TP. Hồ Chí Minh",
+    "period": "Tháng 9/2022 – Tháng 4/2026"
+  },
+  "experiences": [
+    {
+      "role": "Thực tập Frontend",
+      "period": "Tháng 1/2025 – Tháng 4/2025",
+      "company": "CEH Information Services Company Limited",
+      "projects": [
+        {
+          "name": "VTOS — Hệ thống Điều hành Cảng Việt Nam",
+          "description": "Hệ thống quản lý cảng, container và bãi hàng trong lĩnh vực logistics.",
+          "contributions": [
+            "Thiết kế và phát triển các thành phần UI responsive phục vụ quản lý cảng, container và bãi hàng trong lĩnh vực logistics.",
+            "Tích hợp RESTful API vào frontend, xử lý lấy dữ liệu, chuyển đổi và quản lý trạng thái trong các luồng logistics phức tạp.",
+            "Triển khai tính năng bản đồ tương tác dùng Leaflet.js và OpenStreetMap, bao gồm hiển thị lộ trình xe tải thời gian thực và theo dõi tàu.",
+            "Tham gia review code, kiểm thử UI và đóng góp vào frontend theo quy chuẩn nhóm dưới sự hướng dẫn của senior."
+          ]
+        },
+        {
+          "name": "VASSCM — Hệ thống Tự động hóa Hải quan Cảng Biển Việt Nam",
+          "description": "Hệ thống quản lý khai báo hải quan phục vụ báo cáo xuất nhập khẩu và các luồng logistics.",
+          "contributions": [
+            "Phát triển và duy trì giao diện quản lý khai báo hải quan, xuất nhập khẩu và các luồng logistics liên quan.",
+            "Xử lý logic frontend bao gồm quản lý state với Redux, validation form và tích hợp RESTful API.",
+            "Đọc và kiểm tra tài liệu API (Google Docs, Word) để đảm bảo độ chính xác và rõ ràng trước khi bàn giao cho team backend.",
+            "Tham gia review code và đóng góp theo quy chuẩn nhóm dưới sự hướng dẫn của senior."
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "aipromo",
+      "period": "Tháng 1/2026 – Tháng 4/2026",
+      "subtitle": "Nền tảng Marketing & Bán vé Thông minh — Đồ án Tốt nghiệp",
+      "description": "Nền tảng quản lý sự kiện toàn diện với trình chỉnh sửa sơ đồ chỗ ngồi tương tác, trình soạn thảo nội dung marketing AI, và ứng dụng mobile check-in bằng QR. Được xây dựng như đồ án tốt nghiệp với nhóm đầy đủ phụ trách web, mobile, tích hợp thanh toán và kiến trúc hệ thống.",
+      "myContributions": [
+        "Xây dựng trình chỉnh sửa sơ đồ chỗ ngồi tương tác bằng React-Konva, hỗ trợ kéo thả để tạo và chỉnh sửa ghế, khu vực và phân khu cho cấu hình layout sự kiện.",
+        "Phát triển trình soạn thảo nội dung marketing AI với tính năng kéo thả sắp xếp lại các block bằng DnD Kit.",
+        "Tích hợp cổng thanh toán VNPay cho mua vé và nạp tiền ví ban tổ chức, bao gồm quản lý đăng ký gói AI.",
+        "Triển khai Firebase Realtime Database để theo dõi thời hạn đơn hàng, kích hoạt hủy đơn tự động sau 15 phút qua cron job.",
+        "Phát triển dashboard ban tổ chức với phân tích và báo cáo sự kiện bằng Recharts.",
+        "Xây dựng ứng dụng mobile React Native cho check-in QR code tại chỗ và vận hành sự kiện.",
+        "Tham gia thiết kế cơ sở dữ liệu và lập kế hoạch kiến trúc hệ thống.",
+        "Tích hợp docx-preview để hiển thị tài liệu chính sách trong ứng dụng."
+      ]
+    },
+    {
+      "id": "smartcalo",
+      "period": "Tháng 10/2025 – Tháng 11/2025",
+      "subtitle": "Ứng dụng Quản lý Dinh dưỡng & Calo",
+      "description": "Ứng dụng mobile React Native đầy đủ tính năng cho theo dõi calo, quản lý dinh dưỡng và lập kế hoạch bữa ăn cá nhân hóa. Tích hợp nhận dạng thực phẩm bằng AI qua camera, tính toán TDEE và theo dõi tiến trình bằng biểu đồ trực quan.",
+      "myContributions": [
+        "Xây dựng ứng dụng mobile đầy đủ tính năng cho theo dõi calo, quản lý dinh dưỡng và lập kế hoạch bữa ăn cá nhân hóa.",
+        "Tích hợp nhận dạng thực phẩm bằng AI qua camera để tự động xác định món ăn và tính toán calo, carb và chất dinh dưỡng.",
+        "Triển khai tính toán TDEE và phân bổ macro động dựa trên chỉ số cơ thể và mục tiêu thể lực của người dùng.",
+        "Phát triển theo dõi tiến trình bằng biểu đồ trực quan sử dụng React Native Gifted Charts.",
+        "Tích hợp thông báo đẩy và lập kế hoạch bữa ăn theo lịch."
+      ]
+    },
+    {
+      "id": "blooddonation",
+      "period": "Tháng 5/2025 – Tháng 7/2025",
+      "subtitle": "Hệ thống Quản lý Hiến máu & Logistics",
+      "description": "Hệ thống API backend quản lý toàn bộ vòng đời hiến máu — từ đăng ký người hiến và lên lịch hiến đến quản lý kho máu, logistics vận chuyển và yêu cầu máu từ bệnh viện theo thời gian thực. Được xây dựng với NestJS và triển khai qua Docker/Railway.",
+      "myContributions": [
+        "Thiết kế và triển khai RESTful API end-to-end cho toàn bộ vòng đời hiến máu: đăng ký người hiến, lên lịch, quản lý kho máu và yêu cầu từ bệnh viện.",
+        "Xây dựng module Kho máu trung tâm quản lý ngân hàng máu bệnh viện và di động, bao gồm CRUD, theo dõi hết hạn và cập nhật trạng thái thời gian thực (sẵn có, đang dùng, hết hạn).",
+        "Phát triển module Xuất & Logistics để vận chuyển đơn hàng từ kho trung tâm đến đơn vị di động/bệnh viện với theo dõi trạng thái (Đang vận chuyển, Đã giao, Hết hạn).",
+        "Triển khai thông báo đẩy thời gian thực qua WebSocket Gateway để cảnh báo nhân viên về hết hạn và lô máu mới; tích hợp EmailJS cho xác nhận email và thông báo tự động.",
+        "Tích hợp AI Chatbot hỗ trợ người hiến và nhân viên với các câu hỏi về hiến máu, điều kiện y tế và hướng dẫn quy trình.",
+        "Xây dựng module Tìm kiếm địa lý để tìm kho máu gần nhất dựa trên tọa độ GPS, lọc theo nhóm máu và tỉnh/thành phố.",
+        "Triển khai xác thực JWT với Refresh Token rotation, băm mật khẩu, xác nhận email và phân quyền theo vai trò (Admin, Người hiến, Người nhận, Bác sĩ).",
+        "Triển khai bằng Docker với cấu hình CI/CD pipeline và cloud hosting trên Railway."
+      ]
+    }
+  ],
+  "ui": {
+    "nav": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "experience": "Kinh nghiệm",
+      "projects": "Dự án",
+      "contact": "Liên hệ"
+    },
+    "hero": {
+      "greeting": "Lập trình viên Fullstack — Thiên về Frontend",
+      "location": "TP. Hồ Chí Minh · 2026",
+      "bio": "Lập trình viên fullstack. React / React Native / Next.js / .NET / Node.js. Xây dựng ứng dụng web nhanh và mở rộng được.",
+      "cta": "Xem Dự án",
+      "contact": "Liên hệ"
+    },
+    "about": {
+      "sectionLabel": "Giới thiệu",
+      "fullstackDev": "Lập trình viên fullstack",
+      "feAtHeart": "Thích Frontend.",
+      "fullProfile": "Hồ sơ đầy đủ"
+    },
+    "section": {
+      "home": "Trang chủ",
+      "intro": "Giới thiệu",
+      "about": "Giới thiệu",
+      "skills": "Kỹ năng",
+      "experience": "Kinh nghiệm",
+      "education": "Học vấn",
+      "projects": "Dự án",
+      "contact": "Liên hệ"
+    },
+    "projects": {
+      "sectionLabel": "Dự án nổi bật",
+      "viewAll": "Xem tất cả",
+      "filterAll": "Tất cả",
+      "filterFE": "Frontend",
+      "filterBE": "Backend",
+      "filterMobile": "Mobile",
+      "filterFullstack": "Fullstack",
+      "projectCount": "{count} dự án"
+    },
+    "project": {
+      "liveDemo": "Xem Demo",
+      "sourceCode": "Mã nguồn",
+      "viewProject": "Xem dự án",
+      "contributions": "Đóng góp của tôi",
+      "techStack": "Công nghệ",
+      "overview": "Tổng quan",
+      "whatIBuilt": "Những gì tôi đã làm",
+      "status": "Trạng thái",
+      "links": "Liên kết",
+      "prev": "Trước",
+      "next": "Sau",
+      "allProjects": "Tất cả dự án",
+      "statusLive": "● Đang hoạt động",
+      "statusUiOnly": "○ Chỉ UI",
+      "statusPrivate": "○ Riêng tư",
+      "role": {
+        "FE": "Frontend",
+        "BE": "Backend",
+        "Fullstack": "Fullstack",
+        "Mobile": "Mobile"
+      }
+    },
+    "contact": {
+      "title": "Liên hệ",
+      "subtitle": "Hãy liên hệ với tôi cho các cơ hội hoặc chỉ để trò chuyện.",
+      "send": "Gửi tin nhắn",
+      "copy": "Sao chép",
+      "copied": "✓ Đã sao chép"
+    },
+    "footer": {
+      "portfolio": "Portfolio // 2026",
+      "name": "Nguyễn Hoàng Tuệ Sang"
+    }
+  }
+}

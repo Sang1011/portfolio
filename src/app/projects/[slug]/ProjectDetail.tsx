@@ -1,4 +1,3 @@
-
 'use client'
 
 import { motion } from 'framer-motion'
@@ -6,6 +5,7 @@ import Link from 'next/link'
 import { projects, statusLabel, roleLabel, getProjectBySlug } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import { useState } from 'react'
+import { useTranslation } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
@@ -13,6 +13,9 @@ const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans
 export default function ProjectDetailPage({ slug }: { slug: string }) {
     const project = getProjectBySlug(slug)
     if (!project) notFound()
+
+    const { t, messages } = useTranslation()
+    const projectData = messages.projects.find((p: { id: string }) => p.id === project.id)
 
     const [activeImg, setActiveImg] = useState(0)
 
@@ -38,7 +41,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                         color: 'rgba(0,0,0,0.38)', display: 'inline-flex',
                         alignItems: 'center', gap: 8,
                     }}>
-                        <span style={{ color: '#1400FF' }}>←</span> All Projects
+                        <span style={{ color: '#1400FF' }}>←</span> {t('ui.project.allProjects')}
                     </Link>
                 </motion.div>
 
@@ -50,18 +53,18 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     style={{ marginBottom: 64 }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-                        <span style={{ ...mono, fontSize: 9, letterSpacing: '0.4em', color: '#1400FF' }}>
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', color: '#1400FF' }}>
                             {String(currentIndex + 1).padStart(2, '0')}
                         </span>
                         <div style={{ width: 20, height: 1, background: '#1400FF' }} />
                         <span style={{
-                            ...mono, fontSize: 8, letterSpacing: '0.35em', textTransform: 'uppercase',
+                            ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
                             color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)', padding: '2px 8px',
                         }}>
-                            {roleLabel[project.role]}
+                            {t(`ui.project.role.${project.role}`)}
                         </span>
-                        <span style={{ ...mono, fontSize: 8, letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)' }}>
-                            {project.year}
+                        <span style={{ ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)' }}>
+                            {projectData?.period ?? project.period}
                         </span>
                     </div>
 
@@ -74,7 +77,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     </h1>
 
                     <p style={{ ...mono, fontSize: 13, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7, maxWidth: 600 }}>
-                        {project.subtitle}
+                        {projectData?.subtitle ?? project.subtitle}
                     </p>
                 </motion.div>
 
@@ -163,8 +166,8 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                                             overflow: 'hidden',
 
                                             border: `1.5px solid ${i === activeImg
-                                                    ? '#1400FF'
-                                                    : 'rgba(0,0,0,0.1)'
+                                                ? '#1400FF'
+                                                : 'rgba(0,0,0,0.1)'
                                                 }`,
 
                                             transition: 'border-color 0.15s',
@@ -194,20 +197,20 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 64, marginBottom: 80 }}>
                     <div>
                         <div style={{ marginBottom: 48 }}>
-                            <div style={{ ...mono, fontSize: 8, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 16 }}>
-                                Overview
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 16 }}>
+                                {t('ui.project.overview')}
                             </div>
                             <p style={{ ...mono, fontSize: 13, lineHeight: 1.85, color: 'rgba(0,0,0,0.5)' }}>
-                                {project.description}
+                                {projectData?.description ?? project.description}
                             </p>
                         </div>
 
                         <div>
-                            <div style={{ ...mono, fontSize: 8, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 16 }}>
-                                What I built
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 16 }}>
+                                {t('ui.project.whatIBuilt')}
                             </div>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                                {project.myContributions.map((item, i) => (
+                                {(projectData?.myContributions ?? project.myContributions).map((item, i) => (
                                     <motion.li
                                         key={i}
                                         initial={{ opacity: 0, x: -10 }}
@@ -226,13 +229,13 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                         <div>
-                            <div style={{ ...mono, fontSize: 8, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
-                                Tech Stack
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
+                                {t('ui.project.techStack')}
                             </div>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                                 {project.tech.map(t => (
                                     <span key={t} style={{
-                                        ...mono, fontSize: 8, letterSpacing: '0.25em', textTransform: 'uppercase',
+                                        ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
                                         color: 'rgba(0,0,0,0.4)', border: '1px solid rgba(0,0,0,0.12)',
                                         padding: '4px 9px',
                                     }}>
@@ -243,18 +246,18 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                         </div>
 
                         <div>
-                            <div style={{ ...mono, fontSize: 8, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
-                                Status
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
+                                {t('ui.project.status')}
                             </div>
                             <span style={{ ...mono, fontSize: 10, color: project.status === 'live' ? '#1400FF' : 'rgba(0,0,0,0.4)' }}>
-                                {statusLabel[project.status]}
+                                {t(project.status === 'live' ? 'ui.project.statusLive' : project.status === 'private' ? 'ui.project.statusPrivate' : 'ui.project.statusUiOnly')}
                             </span>
                         </div>
 
                         {(project.links.github || project.links.demo) && (
                             <div>
-                                <div style={{ ...mono, fontSize: 8, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
-                                    Links
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
+                                    {t('ui.project.links')}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                                     {project.links.github && (
@@ -270,7 +273,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                                             ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
                                             color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
                                         }}>
-                                            <span style={{ color: '#1400FF' }}>↗</span> Live Demo
+                                            <span style={{ color: '#1400FF' }}>↗</span> {t('ui.project.liveDemo')}
                                         </a>
                                     )}
                                 </div>
@@ -287,8 +290,8 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     {prev ? (
                         <Link href={`/projects/${prev.slug}`} style={{ textDecoration: 'none' }}>
                             <div style={{ padding: '20px 0' }}>
-                                <div style={{ ...mono, fontSize: 8, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 6 }}>
-                                    ← Previous
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 6 }}>
+                                    ← {t('ui.project.prev')}
                                 </div>
                                 <div style={{ ...sans, fontSize: 16, fontWeight: 700, color: '#111' }}>{prev.title}</div>
                             </div>
@@ -298,8 +301,8 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     {next ? (
                         <Link href={`/projects/${next.slug}`} style={{ textDecoration: 'none' }}>
                             <div style={{ padding: '20px 0', textAlign: 'right' }}>
-                                <div style={{ ...mono, fontSize: 8, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 6 }}>
-                                    Next →
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 6 }}>
+                                    {t('ui.project.next')} →
                                 </div>
                                 <div style={{ ...sans, fontSize: 16, fontWeight: 700, color: '#111' }}>{next.title}</div>
                             </div>

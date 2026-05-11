@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { personal } from '@/lib/data'
+import { useTranslation } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
@@ -38,6 +39,7 @@ function SocialLink({ label, href }: { label: string; href: string }) {
 }
 
 export default function ContactSection() {
+    const { t } = useTranslation()
     const [copied, setCopied] = useState(false)
 
     const handleCopy = () => {
@@ -74,10 +76,10 @@ export default function ContactSection() {
                     transition={{ duration: 0.6 }}
                     style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 40 }}
                 >
-                    <span style={{ ...mono, fontSize: 9, letterSpacing: '0.4em', color: '#1400FF' }}>04</span>
+                    <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', color: '#1400FF' }}>04</span>
                     <div style={{ width: 24, height: 1, background: '#1400FF' }} />
-                    <span style={{ ...mono, fontSize: 9, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
-                        Contact
+                    <span style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
+                        {t('ui.nav.contact')}
                     </span>
                 </motion.div>
 
@@ -119,14 +121,14 @@ export default function ContactSection() {
                                 style={{
                                     all: 'unset',
                                     cursor: 'pointer',
-                                    ...mono, fontSize: 8, letterSpacing: '0.35em', textTransform: 'uppercase',
+                                    ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
                                     color: copied ? '#1400FF' : 'rgba(0,0,0,0.35)',
                                     border: `1px solid ${copied ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
                                     padding: '5px 12px',
                                     transition: 'all 0.2s',
                                 }}
                             >
-                                {copied ? '✓ Copied' : 'Copy'}
+                                {copied ? t('ui.contact.copied') : t('ui.contact.copy')}
                             </motion.button>
                         </div>
                     </motion.div>
@@ -139,8 +141,8 @@ export default function ContactSection() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingBottom: 4 }}
                     >
-                        {Object.entries(personal.links).filter(([key]) => key !== 'email').map(([label, href]) => (
-                            <SocialLink key={label} label={label} href={href} />
+                        {Object.entries(personal.links).filter(([key]) => key !== 'email' && key !== 'portfolio').map(([key, href]) => (
+                            <SocialLink key={key} label={key} href={href} />
                         ))}
                     </motion.div>
                 </div>
@@ -162,11 +164,11 @@ export default function ContactSection() {
                     marginTop: 20,
                     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                 }}>
-                    <span style={{ ...mono, fontSize: 9, letterSpacing: '0.35em', color: 'rgba(0,0,0,0.25)', textTransform: 'uppercase' }}>
-                        Portfolio // 2026
+                    <span style={{ ...mono, fontSize: 10, letterSpacing: '0.35em', color: 'rgba(0,0,0,0.48)', textTransform: 'uppercase' }}>
+                        {t('ui.footer.portfolio')}
                     </span>
                     <span style={{ ...mono, fontSize: 12, letterSpacing: '0.25em', color: '#1400FF' }}>
-                        Nguyễn Hoàng Tuệ Sang
+                        {t('ui.footer.name')}
                     </span>
                 </div>
             </div>

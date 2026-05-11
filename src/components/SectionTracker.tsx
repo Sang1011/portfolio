@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useIsMobile } from '@/lib/hooks/useBreakpoint'
+import { useTranslation } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 
 export interface TrackerSection {
     id: string
-    label: string
+    labelKey: 'home' | 'about' | 'experience' | 'education' | 'projects' | 'contact' | 'intro' | 'skills'
     href?: string
 }
 
@@ -19,7 +20,8 @@ interface SectionTrackerProps {
 
 export default function SectionTracker({ sections }: SectionTrackerProps) {
     const router = useRouter()
-    const isMobile = useIsMobile() // ẩn toàn bộ tracker trên mobile
+    const isMobile = useIsMobile()
+    const { t } = useTranslation()
     const [active, setActive] = useState(sections[0]?.id ?? '')
     const [hoveredId, setHoveredId] = useState<string | null>(null)
 
@@ -44,7 +46,6 @@ export default function SectionTracker({ sections }: SectionTrackerProps) {
         return () => observers.forEach(o => o.disconnect())
     }, [sections])
 
-    // Không render gì trên mobile
     if (isMobile) return null
 
     const handleClick = (section: TrackerSection) => {
@@ -68,7 +69,7 @@ export default function SectionTracker({ sections }: SectionTrackerProps) {
             gap: 20,
         }}>
             {sections.map((section) => {
-                const { id, label } = section
+                const { id, labelKey } = section
                 const isActive = active === id
                 const isHovered = hoveredId === id
 
@@ -89,7 +90,7 @@ export default function SectionTracker({ sections }: SectionTrackerProps) {
                                     transition={{ duration: 0.18 }}
                                     style={{
                                         ...mono,
-                                        fontSize: 9,
+                                        fontSize: 10,
                                         letterSpacing: '0.35em',
                                         textTransform: 'uppercase',
                                         color: isActive ? '#1400FF' : 'rgba(0,0,0,0.45)',
@@ -98,14 +99,14 @@ export default function SectionTracker({ sections }: SectionTrackerProps) {
                                         userSelect: 'none',
                                     }}
                                 >
-                                    {label}
+                                    {t(`ui.section.${labelKey}`)}
                                 </motion.span>
                             )}
                         </AnimatePresence>
 
                         <button
                             onClick={() => handleClick(section)}
-                            aria-label={`Go to ${label}`}
+                            aria-label={t(`ui.section.${labelKey}`)}
                             style={{
                                 all: 'unset',
                                 cursor: 'pointer',
@@ -124,7 +125,7 @@ export default function SectionTracker({ sections }: SectionTrackerProps) {
                                         ? '#1400FF'
                                         : isHovered
                                             ? '#111'
-                                            : 'rgba(0,0,0,0.22)',
+                                            : 'rgba(0,0,0,0.45)',
                                 }}
                                 transition={{ type: 'spring', stiffness: 400, damping: 28 }}
                                 style={{ display: 'block', borderRadius: '50%' }}

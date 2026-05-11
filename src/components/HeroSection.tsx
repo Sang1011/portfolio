@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TAGS } from '@/lib/data'
+import { useTranslation } from '@/lib/hooks'
 
 const MARQUEE = TAGS
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
@@ -13,6 +14,7 @@ function scrollTo(id: string) {
 }
 
 function ViewWorkButton() {
+    const { t } = useTranslation()
     const [hovered, setHovered] = useState(false)
     return (
         <button
@@ -33,12 +35,13 @@ function ViewWorkButton() {
                 transition={{ duration: 0.28, ease: 'easeOut' }}
                 style={{ position: 'absolute', inset: 0, background: '#1400FF', display: 'block' }}
             />
-            <span style={{ position: 'relative', zIndex: 1 }}>View Work</span>
+            <span style={{ position: 'relative', zIndex: 1 }}>{t('ui.hero.cta')}</span>
         </button>
     )
 }
 
 function ContactLink() {
+    const { t } = useTranslation()
     const [hovered, setHovered] = useState(false)
     return (
         <button
@@ -54,7 +57,7 @@ function ContactLink() {
                 transition: 'color 0.2s', cursor: 'pointer',
             }}
         >
-            Contact
+            {t('ui.hero.contact')}
             <motion.span
                 animate={{ x: hovered ? 4 : 0 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -76,7 +79,7 @@ function SkillTag({ tag, delay = 0 }: { tag: string; delay?: number }) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             style={{
-                ...mono, fontSize: 9, letterSpacing: '0.28em',
+                ...mono, fontSize: 10, letterSpacing: '0.28em',
                 textTransform: 'uppercase',
                 color: hovered ? '#fff' : 'rgba(0,0,0,0.38)',
                 border: `1px solid ${hovered ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
@@ -94,6 +97,8 @@ function SkillTag({ tag, delay = 0 }: { tag: string; delay?: number }) {
 export default function HeroSection() {
     const [mounted, setMounted] = useState(false)
     useEffect(() => { setMounted(true) }, [])
+    const { t } = useTranslation()
+
     if (!mounted) return null
 
     return (
@@ -119,11 +124,11 @@ export default function HeroSection() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                         <div style={{ width: 24, height: 1, background: '#1400FF' }} />
                         <span style={{ ...mono, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.38)' }}>
-                            Full-Stack Developer — FE Focused
+                            {t('ui.hero.greeting')}
                         </span>
                     </div>
-                    <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.25)' }}>
-                        Ho Chi Minh City, VN · 2026
+                    <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.48)' }}>
+                        {t('personal.location')} · 2026
                     </span>
                 </motion.div>
 
@@ -137,7 +142,7 @@ export default function HeroSection() {
                         <h1 style={{
                             ...sans, fontSize: 'clamp(3.2rem, 9vw, 9.5rem)',
                             fontWeight: 900, lineHeight: 1, letterSpacing: '-0.04em',
-                            color: 'rgba(0,0,0,0.18)', margin: 0,
+                            color: 'rgba(0,0,0,0.55)', margin: 0,
                         }}>
                             FULLSTACK
                         </h1>
@@ -183,8 +188,7 @@ export default function HeroSection() {
                 >
                     <div style={{ maxWidth: 380 }}>
                         <p style={{ ...mono, fontSize: 12.5, lineHeight: 1.8, color: 'rgba(0,0,0,0.48)', marginBottom: 24 }}>
-                            Fullstack developer. React / React Native / Next.js / .NET / Node.js.<br />
-                            Building fast, scalable web applications.
+                            {t('ui.hero.bio')}
                         </p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                             <ViewWorkButton />
@@ -217,7 +221,7 @@ export default function HeroSection() {
                     >
                         <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#1400FF', display: 'block' }} />
                         <span style={{ ...mono, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#1400FF' }}>
-                            Open to Work
+                            {t('personal.available')}
                         </span>
                     </motion.div>
                 </motion.div>
@@ -232,7 +236,7 @@ export default function HeroSection() {
                 >
                     {[...MARQUEE, ...MARQUEE].map((item, i) => (
                         <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 36 }}>
-                            <span style={{ ...mono, fontSize: 9, letterSpacing: '0.38em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.72)' }}>
+                            <span style={{ ...mono, fontSize: 10, letterSpacing: '0.38em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.72)' }}>
                                 {item}
                             </span>
                             <span style={{ color: 'rgba(255,255,255,0.3)' }}>✦</span>

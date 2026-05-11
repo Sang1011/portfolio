@@ -4,12 +4,13 @@ import { motion, AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 import NavLink from "./NavLink"
+import LanguageToggle from "./LanguageToggle"
 import { useIsMobile } from "@/lib/hooks/useBreakpoint"
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 
-const HOME_NAV = ['About', 'Projects', 'Contact']
-const SUB_NAV = ['Home', 'About', 'Projects', 'Contact']
+const HOME_NAV = ['about', 'projects', 'contact'] as const
+const SUB_NAV = ['home', 'about', 'projects', 'contact'] as const
 
 export default function Header() {
     const pathname = usePathname()
@@ -58,6 +59,7 @@ export default function Header() {
                         {navItems.map(item => (
                             <NavLink key={item} item={item} />
                         ))}
+                        <LanguageToggle />
                         <motion.div
                             animate={{ opacity: [1, 0.5, 1] }}
                             transition={{ duration: 2.2, repeat: Infinity }}

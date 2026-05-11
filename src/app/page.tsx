@@ -7,10 +7,10 @@ import SectionTracker from "@/components/SectionTracker"
 import type { TrackerSection } from "@/components/SectionTracker"
 
 const HOME_SECTIONS: TrackerSection[] = [
-  { id: 'hero', label: 'Home' },
-  { id: 'about-preview', label: 'About' },
-  { id: 'projects-preview', label: 'Projects' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'hero', labelKey: 'home' },
+  { id: 'about-preview', labelKey: 'about' },
+  { id: 'projects-preview', labelKey: 'projects' },
+  { id: 'contact', labelKey: 'contact' },
 ]
 
 export default function Home() {

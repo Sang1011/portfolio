@@ -3,21 +3,23 @@
 import { motion } from "framer-motion"
 import { usePathname, useRouter } from "next/navigation"
 import { useHover } from "@/lib/hooks/useHover"
+import { useTranslation } from "@/lib/hooks"
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 
 const NAV_CONFIG: Record<string, { href: string; scrollId?: string }> = {
-    Home: { href: '/' },
-    About: { href: '/about', scrollId: 'about-preview' },
-    Projects: { href: '/projects', scrollId: 'projects-preview' },
-    Contact: { href: '/#contact', scrollId: 'contact' },
+    home: { href: '/' },
+    about: { href: '/about', scrollId: 'about-preview' },
+    projects: { href: '/projects', scrollId: 'projects-preview' },
+    contact: { href: '/#contact', scrollId: 'contact' },
 }
 
 interface NavLinkProps {
-    item: string
+    item: 'home' | 'about' | 'projects' | 'contact'
 }
 
 export default function NavLink({ item }: NavLinkProps) {
+    const { t } = useTranslation()
     const [ref, hovered] = useHover<HTMLAnchorElement>()
     const pathname = usePathname()
     const router = useRouter()
@@ -28,29 +30,25 @@ export default function NavLink({ item }: NavLinkProps) {
     const { href, scrollId } = config
     const isHome = pathname === '/'
 
-    // Active state
     const isActive =
-        item === 'Home'
+        item === 'home'
             ? pathname === '/'
             : pathname !== '/' && (pathname === href || pathname.startsWith(href + '/'))
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault()
 
-        // Đang ở trang chủ → scroll đến section tương ứng
         if (isHome && scrollId) {
             document.getElementById(scrollId)?.scrollIntoView({ behavior: 'smooth' })
             return
         }
 
-        // Home → về trang chủ
-        if (item === 'Home') {
+        if (item === 'home') {
             router.push('/')
             return
         }
 
-        // Contact từ sub-page → về / rồi scroll (browser handle hash)
-        if (item === 'Contact' && !isHome) {
+        if (item === 'contact' && !isHome) {
             router.push('/#contact')
             return
         }
@@ -74,7 +72,7 @@ export default function NavLink({ item }: NavLinkProps) {
                 transition: 'color 0.2s',
             }}
         >
-            {item}
+            {t(`ui.nav.${item}`)}
             <motion.span
                 animate={{ scaleX: hovered || isActive ? 1 : 0 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
