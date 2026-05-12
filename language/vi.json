@@ -1,80 +1,172 @@
 {
-    "ui": {
-        "nav": {
-            "home": "Trang chủ",
-            "about": "Giới thiệu",
-            "projects": "Dự án"
-        },
-        "hero": {
-            "cta": "Xem dự án"
-        },
-        "about": {
-            "sectionLabel": "Giới thiệu"
-        },
-        "section": {
-            "skills": "Kỹ năng",
-            "experience": "Kinh nghiệm",
-            "education": "Học vấn"
-        },
-        "fullstackDev": "Lập trình viên Fullstack",
-        "feAtHeart": "Đam mê Frontend"
+  "ui": {
+    "nav": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "projects": "Dự án",
+      "contact": "Liên hệ"
     },
-    "personal": {
-        "name": "Nguyễn Hoàng Tuệ Sang",
-        "handle": "@sang1011",
-        "location": "TP. Hồ Chí Minh, VN",
-        "bioArray": [
-            "Tốt nghiệp Đại học FPT ngành Kỹ thuật Phần mềm (.NET). Phần lớn thời gian làm việc thực tế dành cho frontend — React, Next.js, và mọi thứ liên quan đến UI.",
-            "Có thể tự code backend khi cần (NestJS, .NET), nhưng frontend mới là sở trường."
-        ],
-        "stats": [
-            { "label": "Vai trò", "value": "Fullstack / FE Focused" },
-            { "label": "Địa điểm", "value": "TP.HCM, VN" },
-            { "label": "Tình trạng", "value": "Sẵn sàng làm việc" },
-            { "label": "Stack", "value": "React · NextJS · NestJS · ASP.NET" }
-        ]
+    "hero": {
+      "cta": "Xem dự án",
+      "contact": "Liên hệ",
+      "greeting": "Xin chào, tôi là",
+      "bio": "Kỹ sư phần mềm chuyên về phát triển ứng dụng web và mobile với các công nghệ hiện đại."
     },
-    "skillGroups": [
-        { "label": "Frontend", "skills": ["React", "Next.js", "React Native", "TypeScript", "JavaScript", "TailwindCSS", "SCSS", "Redux", "Framer Motion"] },
-        { "label": "Backend", "skills": ["C#", "ASP.NET Core", "NestJS", "Node.js", "Express.js", "REST API", "WebSocket", "SignalR"] },
-        { "label": "Database", "skills": ["SQL Server", "PostgreSQL", "MongoDB", "Prisma"] },
-        { "label": "Tooling & Cloud", "skills": ["Docker", "Git", "GitHub", "GitLab", "Firebase", "Vercel", "Railway", "Postman", "Figma"] }
-    ],
-    "experiences": [
-        {
-            "company": "CEH Information Services Company Limited",
-            "period": "Jan 2025 – Apr 2025",
-            "role": "Thực tập Frontend",
-            "projects": [
-                {
-                    "name": "VTOS — Vietnam Terminal Operation System",
-                    "description": "Hệ thống quản lý bến cảng, container và bãi container cho lĩnh vực logistics.",
-                    "contributions": [
-                        "Thiết kế và phát triển các thành phần UI responsive cho hệ thống quản lý bến cảng, container và bãi container.",
-                        "Tích hợp RESTful API vào frontend, xử lý fetching dữ liệu, chuyển đổi và quản lý state trong các workflow logistics phức tạp.",
-                        "Implement tính năng bản đồ tương tác sử dụng Leaflet.js và OpenStreetMap, bao gồm tracking xe tải và tàu thuyền theo thời gian thực.",
-                        "Tham gia code review, kiểm tra UI và đóng góp frontend theo quy ước team dưới sự hướng dẫn của senior."
-                    ],
-                    "tech": ["Next.js", "TypeScript", "TailwindCSS", "Redux", "Leaflet.js", "OpenStreetMap", "AntD"]
-                },
-                {
-                    "name": "VASSCM — VietNam Automated System for Seaport Customs Management",
-                    "description": "Hệ thống quản lý khai báo hải quan cho báo cáo bãi xuất/nhập khẩu và workflow logistics.",
-                    "contributions": [
-                        "Phát triển và bảo trì UI cho hệ thống quản lý khai báo hải quan, báo cáo bãi xuất/nhập khẩu và các workflow logistics liên quan.",
-                        "Xử lý logic nghiệp vụ frontend bao gồm state management với Redux, form validation và tích hợp RESTful API.",
-                        "Review và chỉnh sửa tài liệu API (Google Docs, Word) để đảm bảo độ chính xác trước khi bàn giao cho Backend team.",
-                        "Tham gia code review và đóng góp frontend theo quy ước team dưới sự hướng dẫn của senior."
-                    ],
-                    "tech": ["Next.js", "TypeScript", "TailwindCSS", "Redux", "AntD"]
-                }
-            ]
-        }
-    ],
-    "education": {
-        "school": "Đại học FPT — Cơ sở TP. Hồ Chí Minh",
-        "period": "Sep 2022 – Apr 2026",
-        "degree": "Cử nhân Kỹ thuật Phần mềm",
-        "major": "Chuyên ngành .NET Development"
+    "about": {
+      "sectionLabel": "Về tôi",
+      "fullstackDev": "Lập trình viên Fullstack",
+      "feAtHeart": "Xây dựng sản phẩm chất lượng",
+      "fullProfile": "Xem Hồ sơ đầy đủ"
+    },
+    "section": {
+      "skills": "Kỹ năng",
+      "experience": "Kinh nghiệm",
+      "education": "Học vấn"
+    },
+    "projects": {
+      "sectionLabel": "Dự án đã chọn",
+      "viewAll": "Xem tất cả dự án",
+      "filterAll": "Tất cả",
+      "filterFE": "Frontend",
+      "filterBE": "Backend",
+      "filterMobile": "Mobile",
+      "filterFullstack": "Fullstack"
+    },
+    "project": {
+      "allProjects": "Tất cả dự án",
+      "role": {
+        "FE": "Frontend",
+        "BE": "Backend",
+        "Mobile": "Mobile",
+        "Fullstack": "Fullstack"
+      },
+      "overview": "Tổng quan",
+      "whatIBuilt": "Những gì tôi đã làm",
+      "techStack": "Tech Stack",
+      "status": "Trạng thái",
+      "statusLive": "● Đang hoạt động",
+      "statusPrivate": "○ Riêng tư",
+      "statusUiOnly": "○ Chỉ UI",
+      "links": "Liên kết",
+      "liveDemo": "Xem demo",
+      "prev": "Trước",
+      "next": "Sau"
+    },
+    "contact": {
+      "copy": "Sao chép",
+      "copied": "Đã sao chép!"
+    },
+    "footer": {
+      "portfolio": "Portfolio",
+      "name": "Nguyễn Hoàng Tuệ Sang"
     }
+  },
+  "personal": {
+    "name": "Nguyễn Hoàng Tuệ Sang",
+    "title": "Kỹ sư phần mềm",
+    "location": "TP. Hồ Chí Minh, VN",
+    "available": "Sẵn sàng làm việc",
+    "bioArray": [
+      "Kỹ sư phần mềm đam mê với chuyên môn trong việc xây dựng các ứng dụng web và mobile toàn diện sử dụng công nghệ hiện đại.",
+      "Có kinh nghiệm phát triển giao diện người dùng responsive và hệ thống backend có khả năng mở rộng cho nhiều dự án và ứng dụng thực tế."
+    ],
+    "stats": [
+      { "label": "Vai trò", "value": "Lập trình viên Fullstack" },
+      { "label": "Địa điểm", "value": "TP.HCM, VN" },
+      { "label": "Tình trạng", "value": "Sẵn sàng làm việc" },
+      { "label": "Stack", "value": "React · NextJS · NestJS · ASP.NET" }
+    ]
+  },
+  "skillGroups": [
+    {
+      "label": "Frontend",
+      "skills": [
+        "React",
+        "Next.js",
+        "React Native",
+        "TypeScript",
+        "JavaScript",
+        "TailwindCSS",
+        "SCSS",
+        "Redux",
+        "Framer Motion"
+      ]
+    },
+    {
+      "label": "Backend",
+      "skills": [
+        "C#",
+        "ASP.NET Core",
+        "NestJS",
+        "Node.js",
+        "Express.js",
+        "REST API",
+        "WebSocket",
+        "SignalR"
+      ]
+    },
+    {
+      "label": "Database",
+      "skills": ["SQL Server", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "label": "Tooling & Cloud",
+      "skills": [
+        "Docker",
+        "Git",
+        "GitHub",
+        "GitLab",
+        "Firebase",
+        "Vercel",
+        "Railway",
+        "Postman",
+        "Figma"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "company": "CEH Information Services Company Limited",
+      "period": "Jan 2025 – Apr 2025",
+      "role": "Thực tập Frontend",
+      "projects": [
+        {
+          "name": "VTOS — Vietnam Terminal Operation System",
+          "description": "Hệ thống quản lý bến cảng, container và bãi container cho lĩnh vực logistics.",
+          "contributions": [
+            "Thiết kế và phát triển các thành phần UI responsive cho hệ thống quản lý bến cảng, container và bãi container.",
+            "Tích hợp RESTful API vào frontend, xử lý fetching dữ liệu, chuyển đổi và quản lý state trong các workflow logistics phức tạp.",
+            "Implement tính năng bản đồ tương tác sử dụng Leaflet.js và OpenStreetMap, bao gồm tracking xe tải và tàu thuyền theo thời gian thực.",
+            "Tham gia code review, kiểm tra UI và đóng góp frontend theo quy ước team dưới sự hướng dẫn của senior."
+          ],
+          "tech": [
+            "Next.js",
+            "TypeScript",
+            "TailwindCSS",
+            "Redux",
+            "Leaflet.js",
+            "OpenStreetMap",
+            "AntD"
+          ]
+        },
+        {
+          "name": "VASSCM — VietNam Automated System for Seaport Customs Management",
+          "description": "Hệ thống quản lý khai báo hải quan cho báo cáo bãi xuất/nhập khẩu và workflow logistics.",
+          "contributions": [
+            "Phát triển và bảo trì UI cho hệ thống quản lý khai báo hải quan, báo cáo bãi xuất/nhập khẩu và các workflow logistics liên quan.",
+            "Xử lý logic nghiệp vụ frontend bao gồm state management với Redux, form validation và tích hợp RESTful API.",
+            "Review và chỉnh sửa tài liệu API (Google Docs, Word) để đảm bảo độ chính xác trước khi bàn giao cho Backend team.",
+            "Tham gia code review và đóng góp frontend theo quy ước team dưới sự hướng dẫn của senior."
+          ],
+          "tech": ["Next.js", "TypeScript", "TailwindCSS", "Redux", "AntD"]
+        }
+      ]
+    }
+  ],
+  "education": {
+    "school": "Đại học FPT — Cơ sở TP. Hồ Chí Minh",
+    "period": "Sep 2022 – Apr 2026",
+    "degree": "Cử nhân Kỹ thuật Phần mềm",
+    "major": "Chuyên ngành .NET Development"
+  }
 }
