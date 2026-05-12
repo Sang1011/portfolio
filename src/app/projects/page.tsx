@@ -16,17 +16,14 @@ const STATUS_COLOR: Record<string, string> = {
     private: 'rgba(0,0,0,0.35)',
 }
 
-function ProjectRow({ project, index, t, messages }: {
+function ProjectRow({ project, index, t }: {
     project: typeof projects[0]
     index: number
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     t: any
-    messages: ReturnType<typeof useTranslation>['messages']
 }) {
     const [hovered, setHovered] = useState(false)
     const [imgPos, setImgPos] = useState({ x: 0, y: 0 })
-
-    const projectData = messages.projects.find((p: { id: string }) => p.id === project.id)
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect()
@@ -93,7 +90,7 @@ function ProjectRow({ project, index, t, messages }: {
                             ...mono, fontSize: 11, color: 'rgba(0,0,0,0.6)',
                             margin: '0 0 12px', lineHeight: 1.5,
                         }}>
-                            {projectData?.subtitle ?? project.subtitle}
+                            {project.subtitle}
                         </p>
 
                         {/* tech tags */}
@@ -168,7 +165,7 @@ const FILTER_KEYS = {
 } as const
 
 export default function ProjectsPage() {
-    const { t, messages } = useTranslation()
+    const { t } = useTranslation()
     const [filter, setFilter] = useState<ProjectRole | 'All'>('All')
 
     const filtered = filter === 'All'
@@ -249,7 +246,7 @@ export default function ProjectsPage() {
                         transition={{ duration: 0.2 }}
                     >
                         {filtered.map((p, i) => (
-                            <ProjectRow key={p.id} project={p} index={i} t={t} messages={messages} />
+                            <ProjectRow key={p.id} project={p} index={i} t={t} />
                         ))}
                     </motion.div>
                 </AnimatePresence>

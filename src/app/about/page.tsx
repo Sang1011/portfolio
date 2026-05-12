@@ -68,8 +68,8 @@ type Experience = {
 export default function AboutPage() {
     const { t, messages } = useTranslation()
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const SKILLS = Object.fromEntries((messages.skillGroups as any[]).map((g: { label: string; skills: string[] }) => [g.label, g.skills]))
-    const experiences = messages.experiences as Experience[]
+    const SKILLS = Object.fromEntries(((messages.skillGroups as any[]) ?? []).map((g: { label: string; skills: string[] }) => [g.label, g.skills]))
+    const experiences = (messages.experiences as Experience[]) ?? []
 
     return (
         <main style={{ background: '#FAFAF8', minHeight: '100vh', cursor: 'crosshair' }}>

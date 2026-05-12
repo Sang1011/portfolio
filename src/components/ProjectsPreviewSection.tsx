@@ -15,7 +15,7 @@ const STATUS_KEY: Record<string, 'ui.project.statusLive' | 'ui.project.statusUiO
 }
 
 export default function ProjectsPreviewSection() {
-    const { t, messages } = useTranslation()
+    const { t } = useTranslation()
     const featured = getFeaturedProjects()
 
     return (
@@ -61,7 +61,6 @@ export default function ProjectsPreviewSection() {
             {/* project list */}
             <div style={{ borderTop: '1px solid rgba(0,0,0,0.1)' }}>
                 {featured.map((project, index) => {
-                    const projectData = messages.projects.find((p: { id: string }) => p.id === project.id)
                     return (
                         <motion.div
                             key={project.id}
@@ -101,7 +100,7 @@ export default function ProjectsPreviewSection() {
                                             </span>
                                         </div>
                                         <p style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.6)', margin: '0 0 10px' }}>
-                                            {projectData?.subtitle ?? project.subtitle}
+                                            {project.subtitle}
                                         </p>
                                         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                                             {project.tech.slice(0, 5).map(t => (
@@ -117,7 +116,7 @@ export default function ProjectsPreviewSection() {
                                     </div>
                                     <div style={{ textAlign: 'right', flexShrink: 0 }}>
                                         <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)', marginBottom: 6 }}>
-                                            {projectData?.period ?? project.period}
+                                            {project.period}
                                         </div>
                                         <div style={{
                                             ...mono, fontSize: 10, letterSpacing: '0.3em',

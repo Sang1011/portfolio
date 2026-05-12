@@ -14,8 +14,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
     const project = getProjectBySlug(slug)
     if (!project) notFound()
 
-    const { t, messages } = useTranslation()
-    const projectData = messages.projects.find((p: { id: string }) => p.id === project.id)
+    const { t } = useTranslation()
 
     const [activeImg, setActiveImg] = useState(0)
 
@@ -64,7 +63,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                             {t(`ui.project.role.${project.role}`)}
                         </span>
                         <span style={{ ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)' }}>
-                            {projectData?.period ?? project.period}
+                            {project.period}
                         </span>
                     </div>
 
@@ -77,7 +76,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     </h1>
 
                     <p style={{ ...mono, fontSize: 13, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7, maxWidth: 600 }}>
-                        {projectData?.subtitle ?? project.subtitle}
+                        {project.subtitle}
                     </p>
                 </motion.div>
 
@@ -201,7 +200,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                                 {t('ui.project.overview')}
                             </div>
                             <p style={{ ...mono, fontSize: 13, lineHeight: 1.85, color: 'rgba(0,0,0,0.5)' }}>
-                                {projectData?.description ?? project.description}
+                                {project.description}
                             </p>
                         </div>
 
@@ -210,7 +209,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                                 {t('ui.project.whatIBuilt')}
                             </div>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                                {(projectData?.myContributions ?? project.myContributions).map((item, i) => (
+                                {(project.myContributions).map((item, i) => (
                                     <motion.li
                                         key={i}
                                         initial={{ opacity: 0, x: -10 }}

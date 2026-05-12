@@ -8,14 +8,8 @@ import vi from '@/language/vi.json'
 // ── Types ──────────────────────────────────────────────────────────────────
 type Messages = typeof en  // en is the source of truth for shape
 
-// Dot-notation key helper (up to 3 levels deep)
-type DotKeys<T, Prefix extends string = ''> = {
-    [K in keyof T & string]: T[K] extends object
-    ? DotKeys<T[K], `${Prefix}${K}.`>
-    : `${Prefix}${K}`
-}[keyof T & string]
-
-type TranslationKey = DotKeys<Messages>
+// Allow any string key for maximum flexibility
+type TranslationKey = string
 
 // ── Loader ────────────────────────────────────────────────────────────────
 const dictionaries: Record<string, Messages> = { en, vi }
