@@ -19,9 +19,14 @@
       "fullProfile": "Xem Hồ sơ đầy đủ"
     },
     "section": {
-      "skills": "Kỹ năng",
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
       "experience": "Kinh nghiệm",
-      "education": "Học vấn"
+      "education": "Học vấn",
+      "projects": "Dự án",
+      "contact": "Liên hệ",
+      "intro": "Giới thiệu",
+      "skills": "Kỹ năng"
     },
     "projects": {
       "sectionLabel": "Dự án đã chọn",
@@ -168,5 +173,79 @@
     "period": "Sep 2022 – Apr 2026",
     "degree": "Cử nhân Kỹ thuật Phần mềm",
     "major": "Chuyên ngành .NET Development"
-  }
+  },
+  "projects": [
+    {
+      "id": "aipromo",
+      "slug": "aipromo",
+      "title": "AIPromo",
+      "subtitle": "Nền tảng Marketing Thông Minh & Bán Vé Sự Kiện — Đồ Án Tốt Nghiệp",
+      "year": 2026,
+      "period": "Jan 2026 – Apr 2026",
+      "description": "Nền tảng quản lý sự kiện toàn diện với trình chỉnh sửa sơ đồ chỗ ngồi tương tác, trình soạn thảo nội dung marketing AI, và app mobile quét mã QR check-in. Được xây dựng như đồ án tốt nghiệp với team đầy đủ, bao gồm web, mobile, tích hợp thanh toán và kiến trúc hệ thống.",
+      "myContributions": [
+        "Xây dựng trình chỉnh sửa sơ đồ chỗ ngồi tương tác bằng React-Konva, hỗ trợ kéo thả để tạo và chỉnh sửa ghế, khu vực và phân khu cho cấu hình layout sự kiện.",
+        "Phát triển trình chỉnh sửa nội dung marketing AI với tính năng sắp xếp lại block bằng kéo thả sử dụng DnD Kit.",
+        "Tích hợp cổng thanh toán VNPay cho việc mua vé và nạp tiền ví nhà tổ chức, bao gồm quản lý đăng ký gói AI.",
+        "Implement Firebase Realtime Database để theo dõi thời hạn đơn hàng, tự động hủy đơn sau 15 phút qua cron job.",
+        "Phát triển dashboard nhà tổ chức với phân tích và báo cáo sự kiện bằng Recharts.",
+        "Xây dựng app React Native cho việc check-in bằng mã QR và vận hành sự kiện tại chỗ.",
+        "Tham gia thiết kế cơ sở dữ liệu và lập kế hoạch kiến trúc hệ thống.",
+        "Tích hợp docx-preview để hiển thị tài liệu chính sách trong ứng dụng."
+      ]
+    },
+    {
+      "id": "smartcalo",
+      "slug": "smartcalo",
+      "title": "SmartCalo",
+      "subtitle": "Ứng Dụng Quản Lý Dinh Dưỡng & Calo",
+      "year": 2025,
+      "period": "Oct 2025 – Nov 2025",
+      "description": "Ứng dụng React Native đầy đủ tính năng để theo dõi calo, quản lý dinh dưỡng và lập kế hoạch bữa ăn cá nhân hóa. Tích hợp nhận diện thực phẩm bằng AI qua camera, tính toán TDEE và theo dõi tiến trình với biểu đồ trực quan.",
+      "myContributions": [
+        "Xây dựng ứng dụng mobile đầy đủ tính năng cho việc theo dõi calo, quản lý dinh dưỡng và lập kế hoạch bữa ăn cá nhân hóa.",
+        "Tích hợp nhận diện thực phẩm bằng AI qua camera để tự động xác định món ăn và tính toán calo cùng các chất dinh dưỡng đa lượng.",
+        "Implement tính toán TDEE và phân bổ macro động dựa trên chỉ số cơ thể và mục tiêu thể dục của người dùng.",
+        "Phát triển theo dõi tiến trình với biểu đồ trực quan bằng React Native Gifted Charts.",
+        "Tích hợp thông báo đẩy và lập kế hoạch bữa ăn theo lịch."
+      ]
+    },
+    {
+      "id": "blooddonation",
+      "slug": "blooddonation",
+      "title": "BloodDonation",
+      "subtitle": "Hệ Thống Quản Lý Hiến Máu & Logistics",
+      "year": 2025,
+      "period": "May 2025 – Jul 2025",
+      "description": "Hệ thống backend API cho quản lý vòng đời hiến máu toàn diện — từ đăng ký người hiến, lên lịch hiến máu đến quản lý tồn kho máu, logistics vận chuyển và yêu cầu máu từ bệnh viện theo thời gian thực. Xây dựng bằng NestJS và triển khai qua Docker/Railway.",
+      "myContributions": [
+        "Thiết kế và implement RESTful API cho quản lý vòng đời hiến máu toàn diện, bao gồm đăng ký người hiến, lên lịch hiến máu, theo dõi tồn kho máu và yêu cầu máu từ bệnh viện.",
+        "Xây dựng module Kho Máu Trung Tâm quản lý ngân hàng máu bệnh viện và lưu động, bao gồm thao tác CRUD, theo dõi hạn sử dụng máu và cập nhật trạng thái thời gian thực (có sẵn, đang dùng, hết hạn).",
+        "Phát triển module Xuất Máu & Logistics để xử lý đơn vận chuyển từ kho trung tâm đến đơn vị lưu động/bệnh viện, với theo dõi trạng thái vận chuyển (Đang vận chuyển, Đã giao, Hết hạn).",
+        "Implement thông báo đẩy thời gian thực qua WebSocket Gateway để cảnh báo nhân viên về hết hạn máu và nguồn cung mới; tích hợp EmailJS cho xác minh email và thông báo tự động.",
+        "Tích hợp AI Chatbot để hỗ trợ người hiến và nhân viên với các câu hỏi thường gặp về hiến máu, điều kiện y tế và hướng dẫn quy trình.",
+        "Xây dựng module Tìm Kiếm theo Địa Lý để tìm kho máu gần nhất theo tọa độ GPS, lọc theo nhóm máu và tìm kiếm theo tỉnh/thành phố.",
+        "Implement xác thực JWT với xoay vòng Refresh Token, mã hóa mật khẩu, xác minh email và kiểm soát truy cập theo vai trò (Admin, Người hiến, Người nhận, Bác sĩ).",
+        "Triển khai bằng Docker với cấu hình pipeline CI/CD và hosting đám mây trên Railway."
+      ]
+    },
+    {
+      "id": "tiny-survivor",
+      "slug": "tiny-survivor",
+      "title": "Tiny Survivor",
+      "subtitle": "Game Hành Động RPG Rogue-like",
+      "year": 2025,
+      "period": "May 2025 – Jul 2025",
+      "description": "Game hành động RPG rogue-like với hệ thống đa nhân vật, cơ chế quái vật đa dạng, hệ thống trang bị và vật phẩm thụ động, cùng cơ chế spawn quái vật thông minh — được xây dựng hoàn toàn trên Unity.",
+      "myContributions": [
+        "Thiết kế và xây dựng hệ thống đa nhân vật với buff, skill và phong cách chiến đấu riêng cho mỗi nhân vật.",
+        "Xây dựng hệ thống quái vật đa dạng với cơ chế chiến đấu riêng, boss fight và DropRateManager để quản lý drop vật phẩm.",
+        "Phát triển hệ thống vũ khí và vật phẩm thụ động với cơ chế thu thập và nâng cấp.",
+        "Implement cơ chế Breakable Props và hệ thống spawn quái vật thông minh.",
+        "Tích hợp Firebase cho đăng nhập người dùng và lưu trữ dữ liệu game.",
+        "Xây dựng màn hình lựa chọn nhân vật, battle HUD và inventory sử dụng TextMesh Pro.",
+        "Cấu trúc dữ liệu game bằng Scriptable Objects để dễ quản lý và bảo trì."
+      ]
+    }
+  ]
 }

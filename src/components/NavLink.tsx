@@ -48,8 +48,13 @@ export default function NavLink({ item }: NavLinkProps) {
             return
         }
 
-        if (item === 'contact' && !isHome) {
-            router.push('/#contact')
+        if (item === 'contact') {
+            const element = document.getElementById('contact')
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                return
+            }
+            window.location.href = '/#contact'
             return
         }
 

@@ -130,8 +130,6 @@ export interface ProjectMeta {
     images: string[]
     thumbnail: string
     galleryType: GalleryType
-    description: string
-    myContributions: string[]
     links: {
         github?: string
         demo?: string
@@ -162,17 +160,6 @@ export const projects: ProjectMeta[] = [
             '/projects/aipromo/6.png',
         ],
         thumbnail: '/projects/aipromo/1.png',
-        description: 'Full-stack event management platform with an interactive seat map editor, AI marketing content editor, and mobile QR check-in app. Built as a capstone project with a full team covering web, mobile, payment integration, and system architecture.',
-        myContributions: [
-            "Built an interactive seat map editor using React-Konva, supporting drag-and-drop creation and editing of seats, zones, and sections for event layout configuration.",
-            "Developed AI marketing content editor with drag-and-drop block reordering using DnD Kit.",
-            "Integrated VNPay payment gateway for ticket purchases and organizer wallet top-ups, including AI package subscription management.",
-            "Implemented Firebase Realtime Database for order expiry tracking, triggering automatic order cancellation after 15 minutes via cron job.",
-            "Developed organizer dashboard with event analytics and reporting using Recharts.",
-            "Built React Native mobile app for on-site QR code check-in and event operations.",
-            "Participated in database design and system architecture planning.",
-            "Integrated docx-preview for in-app policy document rendering."
-        ],
         links: {
             demo: 'https://aipromo.online/',
             github: 'https://github.com/Sang1011/AIPromo-Web',
@@ -199,14 +186,6 @@ export const projects: ProjectMeta[] = [
             '/projects/smartcalo/5.webp',
         ],
         thumbnail: '/projects/smartcalo/image.png',
-        description: 'A full-featured React Native mobile app for calorie tracking, nutrition management, and personalized meal planning. Features AI-powered food recognition via camera, TDEE calculation, and progress tracking with visual charts.',
-        myContributions: [
-            "Built a full-featured mobile app for calorie tracking, nutrition management, and personalized meal planning.",
-            "Integrated AI-powered food recognition via camera to automatically identify dishes and calculate calories and macronutrients.",
-            "Implemented TDEE calculation and dynamic macro allocation based on user body metrics and fitness goals.",
-            "Developed progress tracking with visual charts using React Native Gifted Charts.",
-            "Integrated push notifications and calendar-based meal planning."
-        ],
         links: {
             github: 'https://github.com/Sang1011/SmartCaloFE',
             apk: 'https://apkpure.com/smart-calo/com.penta.smartcalo',
@@ -227,19 +206,28 @@ export const projects: ProjectMeta[] = [
         status: 'private',
         images: [],
         thumbnail: '',
-        description: 'Backend API system for end-to-end blood donation lifecycle management — from donor registration and donation scheduling to blood inventory, transport logistics, and real-time hospital blood requests. Built with NestJS and deployed via Docker/Railway.',
-        myContributions: [
-            "Designed and implemented a RESTful API for end-to-end blood donation lifecycle management, covering donor registration, donation scheduling, blood inventory tracking, and hospital blood requests.",
-            "Built a Central Blood Storage module managing hospital and mobile blood banks, including CRUD operations, blood expiry tracking, and real-time status updates (available, in-use, expired).",
-            "Developed a Blood Export & Logistics module to handle transport orders from central storage to mobile/hospital units, with shipment status tracking (In Transit, Delivered, Expired).",
-            "Implemented real-time push notifications via WebSocket Gateway to alert staff on blood expiry and new availability; integrated EmailJS for automated email verification and notifications.",
-            "Integrated an AI Chatbot to assist donors and staff with blood donation FAQs, medical eligibility, and process guidance.",
-            "Built a Geolocation-powered Search module to find nearest blood storage by GPS coordinates, filter by blood type, and query by province/city.",
-            "Implemented JWT-based authentication with Refresh Token rotation, password hashing, email verification, and role-based access control (Admin, Donor, Receiver, Doctor).",
-            "Deployed using Docker with CI/CD pipeline configuration and cloud hosting on Railway."
-        ],
         links: {
             github: 'https://github.com/Sang1011/BloodDonation-BE',
+        },
+        featured: true,
+    },
+    {
+        id: 'tiny-survivor',
+        slug: 'tiny-survivor',
+        title: 'Tiny Survivor',
+        subtitle: 'Action RPG Rogue-like Game',
+        galleryType: 'desktop',
+        period: 'May 2025 – Jul 2025',
+        year: 2025,
+        role: 'Fullstack',
+        tech: ['C#'],
+        status: 'private',
+        images: [
+            '/projects/tiny-survivor/image.png',
+        ],
+        thumbnail: '/projects/tiny-survivor/image.png',
+        links: {
+            github: 'https://github.com/Sang1011/Tiny-Survivors',
         },
         featured: true,
     },

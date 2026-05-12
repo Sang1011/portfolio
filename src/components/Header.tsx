@@ -16,11 +16,9 @@ export default function Header() {
     const pathname = usePathname()
     const isHome = pathname === '/'
     const navItems = isHome ? HOME_NAV : SUB_NAV
-
-    const isMobile = useIsMobile() // < 768px
+    const isMobile = useIsMobile()
     const [menuOpen, setMenuOpen] = useState(false)
 
-    // Đóng menu khi resize lên desktop
     useEffect(() => {
         if (!isMobile) setMenuOpen(false)
     }, [isMobile])

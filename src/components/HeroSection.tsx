@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TAGS } from '@/lib/data'
 import { useTranslation } from '@/lib/hooks'
+import { useRouter, usePathname } from 'next/navigation'
 
 const MARQUEE = TAGS
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
@@ -43,9 +44,19 @@ function ViewWorkButton() {
 function ContactLink() {
     const { t } = useTranslation()
     const [hovered, setHovered] = useState(false)
+
+    const handleClick = () => {
+        const element = document.getElementById('contact')
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            return
+        }
+        window.location.href = '/#contact'
+    }
+
     return (
         <button
-            onClick={() => scrollTo('contact')}
+            onClick={handleClick}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             style={{

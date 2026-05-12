@@ -14,7 +14,10 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
     const project = getProjectBySlug(slug)
     if (!project) notFound()
 
-    const { t } = useTranslation()
+    const { t, messages } = useTranslation()
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const projectData = (messages.projects as any)?.find((p: any) => p.slug === slug)
 
     const [activeImg, setActiveImg] = useState(0)
 
@@ -63,7 +66,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                             {t(`ui.project.role.${project.role}`)}
                         </span>
                         <span style={{ ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)' }}>
-                            {project.period}
+                            {projectData?.period || project.period}
                         </span>
                     </div>
 
@@ -76,7 +79,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     </h1>
 
                     <p style={{ ...mono, fontSize: 13, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7, maxWidth: 600 }}>
-                        {project.subtitle}
+                        {projectData?.subtitle || project.subtitle}
                     </p>
                 </motion.div>
 
@@ -200,7 +203,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                                 {t('ui.project.overview')}
                             </div>
                             <p style={{ ...mono, fontSize: 13, lineHeight: 1.85, color: 'rgba(0,0,0,0.5)' }}>
-                                {project.description}
+                                {projectData?.description || project.title}
                             </p>
                         </div>
 
@@ -209,7 +212,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                                 {t('ui.project.whatIBuilt')}
                             </div>
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                                {(project.myContributions).map((item, i) => (
+                                {(projectData?.myContributions || []).map((item: string, i: number) => (
                                     <motion.li
                                         key={i}
                                         initial={{ opacity: 0, x: -10 }}
@@ -228,7 +231,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                         <div>
-                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 12 }}>
                                 {t('ui.project.techStack')}
                             </div>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -245,7 +248,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                         </div>
 
                         <div>
-                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 12 }}>
                                 {t('ui.project.status')}
                             </div>
                             <span style={{ ...mono, fontSize: 10, color: project.status === 'live' ? '#1400FF' : 'rgba(0,0,0,0.4)' }}>
@@ -255,7 +258,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
 
                         {(project.links.github || project.links.demo) && (
                             <div>
-                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 12 }}>
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 12 }}>
                                     {t('ui.project.links')}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
