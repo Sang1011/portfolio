@@ -153,7 +153,7 @@ export const projects: ProjectMeta[] = [
         year: 2026,
         period: 'Mar 2026 – Present',
         role: ['BE'],
-        tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT'],
+        tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT', 'SignalR', 'EmailJS'],
         status: 'private',
         images: [],
         thumbnail: '',
