@@ -91,13 +91,17 @@ export default function ProjectsPreviewSection() {
                                             }}>
                                                 {project.title}
                                             </h3>
-                                            <span style={{
-                                                ...mono, fontSize: 10, letterSpacing: '0.35em',
-                                                textTransform: 'uppercase', color: '#1400FF',
-                                                border: '1px solid rgba(20,0,255,0.3)', padding: '2px 7px',
-                                            }}>
-                                                {t(`ui.project.role.${project.role}`)}
-                                            </span>
+                                            <div style={{ display: 'flex', gap: 6 }}>
+                                                {project.role.map(r => (
+                                                    <span key={r} style={{
+                                                        ...mono, fontSize: 10, letterSpacing: '0.35em',
+                                                        textTransform: 'uppercase', color: '#1400FF',
+                                                        border: '1px solid rgba(20,0,255,0.3)', padding: '2px 7px',
+                                                    }}>
+                                                        {t(`ui.project.role.${r}`)}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                         <p style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.6)', margin: '0 0 10px' }}>
                                             {project.subtitle}

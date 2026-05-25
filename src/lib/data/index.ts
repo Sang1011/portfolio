@@ -124,7 +124,7 @@ export interface ProjectMeta {
     subtitle: string
     year: number
     period: string
-    role: ProjectRole
+    role: ProjectRole[]
     tech: TechTag[]
     status: ProjectStatus
     images: string[]
@@ -132,6 +132,9 @@ export interface ProjectMeta {
     galleryType: GalleryType
     links: {
         github?: string
+        githubFE?: string
+        githubBE?: string
+        githubMobile?: string
         demo?: string
         apk?: string
         landing?: string
@@ -148,7 +151,7 @@ export const projects: ProjectMeta[] = [
         galleryType: 'desktop',
         year: 2026,
         period: 'Apr 2026 – Present',
-        role: 'BE',
+        role: ['BE'],
         tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT'],
         status: 'private',
         images: [],
@@ -166,7 +169,7 @@ export const projects: ProjectMeta[] = [
         galleryType: 'mixed',
         year: 2026,
         period: 'Jan 2026 – Apr 2026',
-        role: 'FE',
+        role: ['FE', 'Mobile'],
         tech: ['React', 'TypeScript', 'TailwindCSS', 'Redux', 'React Native', 'Firebase', 'Recharts', 'React-Konva', 'DnD Kit', 'VNPay'],
         status: 'live',
         images: [
@@ -193,7 +196,7 @@ export const projects: ProjectMeta[] = [
         galleryType: 'mobile',
         year: 2025,
         period: 'Oct 2025 – Nov 2025',
-        role: 'Mobile',
+        role: ['Mobile'],
         tech: ['React Native', 'Expo', 'TypeScript', 'Redux', 'Firebase', 'Expo Camera', 'Expo Router'],
         status: 'live',
         images: [
@@ -219,13 +222,14 @@ export const projects: ProjectMeta[] = [
         galleryType: 'desktop',
         year: 2025,
         period: 'May 2025 – Jul 2025',
-        role: 'BE',
+        role: ['BE', 'FE', 'Mobile'],
         tech: ['TypeScript', 'NestJS', 'MongoDB', 'Docker', 'Cloudinary', 'JWT', 'WebSocket', 'EmailJS', 'Redis'],
         status: 'private',
         images: [],
         thumbnail: '',
         links: {
             github: 'https://github.com/Sang1011/BloodDonation-BE',
+            githubFE: 'https://github.com/lvstants/BloodDonationASS',
         },
         featured: true,
     },
@@ -237,7 +241,7 @@ export const projects: ProjectMeta[] = [
         galleryType: 'desktop',
         period: 'May 2025 – Jul 2025',
         year: 2025,
-        role: 'Fullstack',
+        role: ['Fullstack'],
         tech: ['C#'],
         status: 'private',
         images: [
@@ -271,4 +275,4 @@ export const getFeaturedProjects = () =>
     projects.filter((p) => p.featured)
 
 export const getProjectsByRole = (role: ProjectRole) =>
-    projects.filter((p) => p.role === role)
+    projects.filter((p) => p.role.includes(role))

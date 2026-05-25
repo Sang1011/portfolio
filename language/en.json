@@ -256,14 +256,16 @@
       "period": "Apr 2026 – Present",
       "description": "Backend API system for an online medical appointment booking platform. Built with Clean Architecture, CQRS, and Event-Driven design on ASP.NET Core 10. Supports doctor schedule management, slot-based booking with conflict detection, and booking lifecycle management from creation to completion.",
       "myContributions": [
-        "Designed and implemented Clean Architecture with strict dependency rules across Domain, Application, Infrastructure, and API layers.",
-        "Built Auth module with JWT access token (15-min) + Refresh Token rotation, BCrypt password hashing, email verification via Redis, and account lockout after 5 failed login attempts.",
-        "Applied CQRS with MediatR — commands and queries fully separated, with validation pipeline via FluentValidation and structured logging via Serilog.",
-        "Implemented Rich Domain Model with Result pattern for business rule violations instead of exceptions, and Domain Events dispatched post-SaveChanges.",
-        "Built Doctor & Schedule module with slot-based scheduling (1-hour slots, 7:00–17:00), conflict detection via unique constraint, and available slot caching with Redis.",
-        "Designed Booking lifecycle with strict status transitions: Pending → Confirmed → Completed/Cancelled/Rescheduled, with pessimistic locking to prevent double booking.",
-        "Implemented event-driven side effects: booking confirmation emails, cancellation notifications, and 24-hour reminder background jobs via domain events.",
-        "Containerized with Docker Compose (PostgreSQL + Redis) and configured Swagger with JWT Bearer support for full API documentation."
+        "Designed and implemented a RESTful API for end-to-end blood donation lifecycle management, covering donor registration, donation scheduling, blood inventory tracking, and hospital blood requests.",
+        "Built a Central Blood Storage module managing hospital and mobile blood banks, including CRUD operations, blood expiry tracking, and real-time status updates (available, in-use, expired).",
+        "Developed a Blood Export & Logistics module to handle transport orders from central storage to mobile/hospital units, with shipment status tracking (In Transit, Delivered, Expired).",
+        "Implemented real-time push notifications via WebSocket Gateway to alert staff on blood expiry and new availability; integrated EmailJS for automated email verification and notifications.",
+        "Integrated an AI Chatbot to assist donors and staff with blood donation FAQs, medical eligibility, and process guidance.",
+        "Built a Geolocation-powered Search module to find nearest blood storage by GPS coordinates, filter by blood type, and query by province/city.",
+        "Implemented JWT-based authentication with Refresh Token rotation, password hashing, email verification, and role-based access control (Admin, Donor, Receiver, Doctor).",
+        "Deployed using Docker with CI/CD pipeline configuration and cloud hosting on Railway.",
+        "Developed donor registration and onboarding pages on the web frontend, handling form validation and API integration.",
+        "Built location-based search UI on both web and mobile, allowing users to find nearby blood storage facilities by GPS coordinates and filter by blood type."
       ]
     }
   ]

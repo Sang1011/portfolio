@@ -226,7 +226,9 @@
         "Tích hợp AI Chatbot để hỗ trợ người hiến và nhân viên với các câu hỏi thường gặp về hiến máu, điều kiện y tế và hướng dẫn quy trình.",
         "Xây dựng module Tìm Kiếm theo Địa Lý để tìm kho máu gần nhất theo tọa độ GPS, lọc theo nhóm máu và tìm kiếm theo tỉnh/thành phố.",
         "Implement xác thực JWT với xoay vòng Refresh Token, mã hóa mật khẩu, xác minh email và kiểm soát truy cập theo vai trò (Admin, Người hiến, Người nhận, Bác sĩ).",
-        "Triển khai bằng Docker với cấu hình pipeline CI/CD và hosting đám mây trên Railway."
+        "Triển khai bằng Docker với cấu hình pipeline CI/CD và hosting đám mây trên Railway.",
+        "Phát triển trang đăng ký và onboarding người hiến máu trên web frontend, xử lý form validation và tích hợp API.",
+        "Xây dựng UI tìm kiếm theo vị trí trên cả web và mobile, cho phép người dùng tìm kho máu gần nhất theo tọa độ GPS và lọc theo nhóm máu."
       ]
     },
     {
