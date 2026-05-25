@@ -170,7 +170,7 @@ export default function ProjectsPage() {
 
     const filtered = filter === 'All'
         ? projects
-        : projects.filter(p => p.role === filter)
+        : projects.filter(p => p.role.includes(filter))
 
     return (
         <main style={{ background: '#FAFAF8', minHeight: '100vh', cursor: 'crosshair' }}>

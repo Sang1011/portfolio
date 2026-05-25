@@ -253,7 +253,7 @@
       "title": "BookingCare",
       "subtitle": "Online Medical Appointment Booking API",
       "year": 2026,
-      "period": "Apr 2026 – Present",
+      "period": "Mar 2026 – Present",
       "description": "Backend API system for an online medical appointment booking platform. Built with Clean Architecture, CQRS, and Event-Driven design on ASP.NET Core 10. Supports doctor schedule management, slot-based booking with conflict detection, and booking lifecycle management from creation to completion.",
       "myContributions": [
         "Designed and implemented a RESTful API for end-to-end blood donation lifecycle management, covering donor registration, donation scheduling, blood inventory tracking, and hospital blood requests.",

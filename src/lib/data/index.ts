@@ -150,7 +150,7 @@ export const projects: ProjectMeta[] = [
         subtitle: 'Online Medical Appointment Booking API',
         galleryType: 'desktop',
         year: 2026,
-        period: 'Apr 2026 – Present',
+        period: 'Mar 2026 – Present',
         role: ['BE'],
         tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT'],
         status: 'private',
@@ -222,7 +222,7 @@ export const projects: ProjectMeta[] = [
         galleryType: 'desktop',
         year: 2025,
         period: 'May 2025 – Jul 2025',
-        role: ['BE', 'FE', 'Mobile'],
+        role: ['Fullstack', 'Mobile'],
         tech: ['TypeScript', 'NestJS', 'MongoDB', 'Docker', 'Cloudinary', 'JWT', 'WebSocket', 'EmailJS', 'Redis'],
         status: 'private',
         images: [],
@@ -230,6 +230,7 @@ export const projects: ProjectMeta[] = [
         links: {
             github: 'https://github.com/Sang1011/BloodDonation-BE',
             githubFE: 'https://github.com/lvstants/BloodDonationASS',
+            demo: 'https://blood-donation-ass.vercel.app/'
         },
         featured: true,
     },
