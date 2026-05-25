@@ -135,7 +135,6 @@ export interface ProjectMeta {
     links: {
         github?: string
         githubFE?: string
-        githubBE?: string
         githubMobile?: string
         demo?: string
         apk?: string

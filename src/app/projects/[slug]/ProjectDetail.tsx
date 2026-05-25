@@ -258,26 +258,40 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                             </span>
                         </div>
 
-                        {(project.links.github || project.links.demo) && (
+                        {(project.links.github || project.links.githubFE || project.links.githubMobile || project.links.demo || project.links.apk || project.links.landing) && (
                             <div>
                                 <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 12 }}>
                                     {t('ui.project.links')}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                                     {project.links.github && (
-                                        <a href={project.links.github} target="_blank" rel="noopener noreferrer" style={{
-                                            ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
-                                            color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
-                                        }}>
-                                            <span style={{ color: '#1400FF' }}>↗</span> GitHub
+                                        <a href={project.links.github} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                            <span style={{ color: '#1400FF' }}>↗</span> GitHub (BE)
+                                        </a>
+                                    )}
+                                    {project.links.githubFE && (
+                                        <a href={project.links.githubFE} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                            <span style={{ color: '#1400FF' }}>↗</span> GitHub (FE)
+                                        </a>
+                                    )}
+                                    {project.links.githubMobile && (
+                                        <a href={project.links.githubMobile} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                            <span style={{ color: '#1400FF' }}>↗</span> GitHub (Mobile)
                                         </a>
                                     )}
                                     {project.links.demo && (
-                                        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" style={{
-                                            ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
-                                            color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
-                                        }}>
+                                        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                                             <span style={{ color: '#1400FF' }}>↗</span> {t('ui.project.liveDemo')}
+                                        </a>
+                                    )}
+                                    {project.links.apk && (
+                                        <a href={project.links.apk} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                            <span style={{ color: '#1400FF' }}>↗</span> Download APK
+                                        </a>
+                                    )}
+                                    {project.links.landing && (
+                                        <a href={project.links.landing} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#111', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                                            <span style={{ color: '#1400FF' }}>↗</span> Landing Page
                                         </a>
                                     )}
                                 </div>
