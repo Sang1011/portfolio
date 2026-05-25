@@ -17,6 +17,8 @@ export const personal = {
     name: 'Nguyễn Hoàng Tuệ Sang',
     handle: '@sang1011',
     location: 'Ho Chi Minh City, VN',
+    gender: 'Female',
+    dateOfBirth: '15/10/2004',
     links: {
         github: 'https://github.com/Sang1011',
         linkedin: 'https://www.linkedin.com/in/tue-sang',
@@ -25,15 +27,15 @@ export const personal = {
     },
     phone: '0977064053',
     address: 'Tỉnh lộ 8, Ấp 20, xã Phú Hòa Đông, Củ Chi, TP.HCM',
-    bio: "FPT University graduate in Software Engineering (.NET track). Spent most of my real-world time on the frontend — React, Next.js, and everything UI. Can wire up the backend when needed (NestJS, .NET), but frontend is where I feel most at home.",
+    bio: "FPT University graduate in Software Engineering (.NET track). Builds across the full stack — React, Next.js on the frontend, ASP.NET Core and NestJS on the backend, React Native for mobile. Not afraid to pick up new technologies and jump into unfamiliar domains.",
     bioArray: [
-        "FPT University graduate in Software Engineering (.NET track). Spent most of my real-world time on the frontend — React, Next.js, and everything UI.",
-        "Can wire up the backend when needed (NestJS, .NET), but frontend is where I feel most at home."
+        "FPT University graduate in Software Engineering (.NET track). Builds across the full stack — React, Next.js on the frontend, ASP.NET Core and NestJS on the backend.",
+        "Ships mobile with React Native and Expo. Not afraid to pick up new technologies and jump into unfamiliar domains to get things done."
     ],
     title: "Fullstack Developer",
     available: "Open to Work",
     stats: [
-        { label: "Role", value: "Fullstack / FE Focused" },
+        { label: "Role", value: "Fullstack" },
         { label: "Location", value: "HCM City, VN" },
         { label: "Status", value: "Open to Work" },
         { label: "Stack", value: "React · NextJS · NestJS · ASP.NET" }
@@ -114,7 +116,7 @@ export const education = {
     period: 'Sep 2022 – Apr 2026',
     degree: 'Bachelor of Software Engineering',
     major: 'Specializing in .NET Development',
-    gpa: '3.5 / 4.0',
+    gpa: '3.56 / 4.0',
 }
 
 export interface ProjectMeta {

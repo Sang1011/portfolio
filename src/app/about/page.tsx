@@ -142,8 +142,8 @@ export default function AboutPage() {
                         ))}
 
                         {/* quick stats */}
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, border: '1px solid rgba(0,0,0,0.1)' }}>
-                            {(messages.personal.stats as { label: string; value: string }[]).map(({ label, value }) => (
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, border: '1px solid rgba(0,0,0,0.1)', marginBottom: 32 }}>
+                            {messages.personal.stats.map(({ label, value }: { label: string; value: string }) => (
                                 <div key={label} style={{
                                     padding: '14px 18px',
                                     borderBottom: '1px solid rgba(0,0,0,0.08)',
@@ -155,6 +155,18 @@ export default function AboutPage() {
                                     <div style={{ ...mono, fontSize: 11, color: '#111' }}>{value}</div>
                                 </div>
                             ))}
+                            <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
+                                    {t('personal.genderLabel')}
+                                </div>
+                                <div style={{ ...mono, fontSize: 11, color: '#111' }}>{messages.personal.gender}</div>
+                            </div>
+                            <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
+                                <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
+                                    {t('personal.dobLabel')}
+                                </div>
+                                <div style={{ ...mono, fontSize: 11, color: '#111' }}>{messages.personal.dateOfBirth}</div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

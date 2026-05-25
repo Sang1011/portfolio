@@ -59,12 +59,14 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                             {String(currentIndex + 1).padStart(2, '0')}
                         </span>
                         <div style={{ width: 20, height: 1, background: '#1400FF' }} />
-                        <span style={{
-                            ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
-                            color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)', padding: '2px 8px',
-                        }}>
-                            {t(`ui.project.role.${project.role}`)}
-                        </span>
+                        {project.role.map(r => (
+                            <span key={r} style={{
+                                ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
+                                color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)', padding: '2px 8px',
+                            }}>
+                                {t(`ui.project.role.${r}`)}
+                            </span>
+                        ))}
                         <span style={{ ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)' }}>
                             {projectData?.period || project.period}
                         </span>

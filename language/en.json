@@ -68,12 +68,14 @@
   },
   "personal": {
     "name": "Nguyen Hoang Tue Sang",
-    "title": "Software Engineer",
+    "gender": "Female",
+    "dateOfBirth": "Oct 15, 2004",
+    "title": "Fullstack Developer",
     "location": "Ho Chi Minh City, VN",
-    "available": "Available for opportunities",
+    "available": "Open to Work",
     "bioArray": [
-      "Passionate software engineer with expertise in building full-stack web and mobile applications using modern technologies.",
-      "Experienced in developing responsive user interfaces and scalable backend systems for various projects and real-world applications."
+      "FPT University graduate in Software Engineering (.NET track). Builds across the full stack — React, Next.js on the frontend, ASP.NET Core and NestJS on the backend.",
+      "Ships mobile with React Native and Expo. Not afraid to pick up new technologies and jump into unfamiliar domains to get things done."
     ],
     "stats": [
       { "label": "Role", "value": "Fullstack Developer" },

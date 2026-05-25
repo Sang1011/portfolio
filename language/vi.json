@@ -68,12 +68,14 @@
   },
   "personal": {
     "name": "Nguyễn Hoàng Tuệ Sang",
-    "title": "Kỹ sư phần mềm",
+    "gender": "Nữ",
+    "dateOfBirth": "15/10/2004",
+    "title": "Lập trình viên Fullstack",
     "location": "TP. Hồ Chí Minh, VN",
     "available": "Sẵn sàng làm việc",
     "bioArray": [
-      "Kỹ sư phần mềm đam mê với chuyên môn trong việc xây dựng các ứng dụng web và mobile toàn diện sử dụng công nghệ hiện đại.",
-      "Có kinh nghiệm phát triển giao diện người dùng responsive và hệ thống backend có khả năng mở rộng cho nhiều dự án và ứng dụng thực tế."
+      "Tốt nghiệp Kỹ thuật Phần mềm tại FPT University chuyên ngành .NET. Phát triển toàn stack — React, Next.js ở frontend, ASP.NET Core và NestJS ở backend.",
+      "Làm mobile với React Native và Expo. Không ngại học hỏi công nghệ mới và bước vào những lĩnh vực chưa quen để hoàn thành công việc."
     ],
     "stats": [
       { "label": "Vai trò", "value": "Lập trình viên Fullstack" },

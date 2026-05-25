@@ -76,14 +76,14 @@ function ProjectRow({ project, index, t }: {
                                 {project.title}
                             </h3>
                             {/* role badge */}
-                            <span style={{
-                                ...mono, fontSize: 10, letterSpacing: '0.35em',
-                                textTransform: 'uppercase',
-                                color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)',
-                                padding: '2px 7px',
-                            }}>
-                                {t(`ui.project.role.${project.role}`)}
-                            </span>
+                            {project.role.map(r => (
+                                <span key={r} style={{
+                                    ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
+                                    color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)', padding: '2px 8px',
+                                }}>
+                                    {t(`ui.project.role.${r}`)}
+                                </span>
+                            ))}
                         </div>
 
                         <p style={{

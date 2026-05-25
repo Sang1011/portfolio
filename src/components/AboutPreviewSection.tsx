@@ -127,6 +127,18 @@ export default function AboutPreviewSection() {
                                 <div style={{ ...mono, fontSize: 11, color: '#111' }}>{value}</div>
                             </div>
                         ))}
+                        <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
+                                {t('personal.genderLabel')}
+                            </div>
+                            <div style={{ ...mono, fontSize: 11, color: '#111' }}>{messages.personal.gender}</div>
+                        </div>
+                        <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
+                                {t('personal.dobLabel')}
+                            </div>
+                            <div style={{ ...mono, fontSize: 11, color: '#111' }}>{messages.personal.dateOfBirth}</div>
+                        </div>
                     </div>
 
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 40 }}>
