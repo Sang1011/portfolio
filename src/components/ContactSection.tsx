@@ -61,12 +61,6 @@ export default function ContactSection() {
                 position: 'relative',
             }}
         >
-            {/* top divider */}
-            <div style={{
-                position: 'absolute', top: 0, left: 48, right: 48,
-                height: 1, background: 'rgba(0,0,0,0.1)',
-            }} />
-
             <div style={{ width: '100%' }}>
                 {/* section label */}
                 <motion.div

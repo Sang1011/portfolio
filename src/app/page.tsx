@@ -1,10 +1,9 @@
-import Header from "@/components/Header"
-import HeroSection from "@/components/HeroSection"
 import AboutPreviewSection from "@/components/AboutPreviewSection"
-import ProjectsPreviewSection from "@/components/ProjectsPreviewSection"
 import ContactSection from "@/components/ContactSection"
-import SectionTracker from "@/components/SectionTracker"
+import HeroSection from "@/components/HeroSection"
+import ProjectsPreviewSection from "@/components/ProjectsPreviewSection"
 import type { TrackerSection } from "@/components/SectionTracker"
+import SectionTracker from "@/components/SectionTracker"
 
 const HOME_SECTIONS: TrackerSection[] = [
   { id: 'hero', labelKey: 'home' },
