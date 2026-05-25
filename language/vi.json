@@ -246,6 +246,25 @@
         "Xây dựng màn hình lựa chọn nhân vật, battle HUD và inventory sử dụng TextMesh Pro.",
         "Cấu trúc dữ liệu game bằng Scriptable Objects để dễ quản lý và bảo trì."
       ]
+    },
+    {
+      "id": "bookingcare",
+      "slug": "bookingcare",
+      "title": "BookingCare",
+      "subtitle": "API Đặt Lịch Khám Bệnh Online",
+      "year": 2026,
+      "period": "Apr 2026 – Hiện tại",
+      "description": "Hệ thống backend API cho nền tảng đặt lịch khám bệnh online. Xây dựng theo Clean Architecture, CQRS và Event-Driven design trên ASP.NET Core 10. Hỗ trợ quản lý lịch làm việc bác sĩ, đặt lịch theo slot với kiểm tra conflict, và quản lý toàn bộ vòng đời lịch hẹn.",
+      "myContributions": [
+        "Thiết kế và implement Clean Architecture với quy tắc dependency nghiêm ngặt giữa các layer Domain, Application, Infrastructure và API.",
+        "Xây dựng Auth module với JWT access token (15 phút) + Refresh Token rotation, BCrypt hashing, xác minh email qua Redis, và khóa tài khoản sau 5 lần đăng nhập sai.",
+        "Áp dụng CQRS với MediatR — tách biệt hoàn toàn command và query, có validation pipeline qua FluentValidation và structured logging qua Serilog.",
+        "Implement Rich Domain Model với Result pattern cho business rule violations thay vì throw exception, và Domain Events dispatch sau SaveChanges.",
+        "Xây dựng Doctor & Schedule module với lịch làm việc theo slot 1 tiếng (7:00–17:00), phát hiện conflict qua unique constraint, và cache slot trống bằng Redis.",
+        "Thiết kế Booking lifecycle với chuyển trạng thái chặt chẽ: Pending → Confirmed → Completed/Cancelled/Rescheduled, dùng pessimistic lock để tránh double booking.",
+        "Implement side effect theo Event-Driven: gửi email xác nhận booking, thông báo hủy lịch và nhắc nhở trước 24 giờ qua domain events.",
+        "Containerize với Docker Compose (PostgreSQL + Redis) và cấu hình Swagger với JWT Bearer support cho toàn bộ API documentation."
+      ]
     }
   ]
 }

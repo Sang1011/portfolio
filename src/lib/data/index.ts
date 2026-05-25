@@ -141,6 +141,24 @@ export interface ProjectMeta {
 
 export const projects: ProjectMeta[] = [
     {
+        id: 'bookingcare',
+        slug: 'bookingcare',
+        title: 'BookingCare',
+        subtitle: 'Online Medical Appointment Booking API',
+        galleryType: 'desktop',
+        year: 2026,
+        period: 'Apr 2026 – Present',
+        role: 'BE',
+        tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT'],
+        status: 'private',
+        images: [],
+        thumbnail: '',
+        links: {
+            github: 'https://github.com/Sang1011/BookingCare',
+        },
+        featured: true,
+    },
+    {
         id: 'aipromo',
         slug: 'aipromo',
         title: 'AIPromo',

@@ -101,8 +101,6 @@ export default function AboutPage() {
                                 aspectRatio: '4/5',
                                 objectFit: 'cover',
                                 objectPosition: 'top',
-                                filter: 'grayscale(100%) contrast(1.05)',
-                                mixBlendMode: 'multiply',
                                 display: 'block',
                             }}
                         />

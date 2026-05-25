@@ -54,7 +54,6 @@ export default function AboutPreviewSection() {
                             aspectRatio: '4/5',
                             objectFit: 'cover',
                             objectPosition: 'top',
-                            filter: 'grayscale(100%) contrast(1.05)',
                             display: 'block',
                         }}
                     />
