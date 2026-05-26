@@ -120,7 +120,7 @@ export default function ContactSection() {
                                     color: '#111', textDecoration: 'none',
                                 }}
                             >
-                                {personal.links.email}
+                                Email: {personal.links.email}
                             </a>
 
                             {/* copy button */}
