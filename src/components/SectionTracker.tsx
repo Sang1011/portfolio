@@ -10,7 +10,7 @@ const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), mono
 
 export interface TrackerSection {
     id: string
-    labelKey: 'home' | 'about' | 'experience' | 'education' | 'projects' | 'contact' | 'intro' | 'skills'
+    labelKey: 'home' | 'about' | 'experience' | 'education' | 'projects' | 'contact' | 'intro' | 'skills' | 'documents'
     href?: string
 }
 

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import NavLink from "./NavLink"
 import LanguageToggle from "./LanguageToggle"
 import { useIsMobile } from "@/lib/hooks/useBreakpoint"
+import { useTranslation } from "@/lib/hooks"
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 
@@ -16,8 +17,9 @@ export default function Header() {
     const pathname = usePathname()
     const isHome = pathname === '/'
     const navItems = isHome ? HOME_NAV : SUB_NAV
-    const isMobile = useIsMobile()
+    const isMobile = useIsMobile('md')
     const [menuOpen, setMenuOpen] = useState(false)
+    const { t } = useTranslation()
 
     useEffect(() => {
         if (!isMobile) setMenuOpen(false)
@@ -30,7 +32,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 style={{
-                    position: isHome ? 'relative' : 'sticky',
+                    position: isMobile || !isHome ? 'sticky' : 'relative',
                     top: 0,
                     zIndex: 50,
                     flexShrink: 0,
@@ -70,7 +72,7 @@ export default function Header() {
                         >
                             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#1400FF', display: 'block' }} />
                             <span style={{ ...mono, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#1400FF' }}>
-                                Open to Work
+                                {t('personal.available')}
                             </span>
                         </motion.div>
                     </nav>
@@ -145,22 +147,36 @@ export default function Header() {
                             </motion.div>
                         ))}
 
-                        <motion.div
-                            animate={{ opacity: [1, 0.5, 1] }}
-                            transition={{ duration: 2.2, repeat: Infinity }}
+                        <div
                             style={{
-                                display: 'inline-flex', alignItems: 'center', gap: 7,
-                                padding: '5px 11px',
-                                border: '1px solid #1400FF',
-                                background: 'rgba(20,0,255,0.05)',
-                                alignSelf: 'flex-start',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: 16,
+                                width: '100%',
                             }}
                         >
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#1400FF', display: 'block' }} />
-                            <span style={{ ...mono, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#1400FF' }}>
-                                Open to Work
-                            </span>
-                        </motion.div>
+                            <motion.div
+                                animate={{ opacity: [1, 0.5, 1] }}
+                                transition={{ duration: 2.2, repeat: Infinity }}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: 7,
+                                    padding: '5px 11px',
+                                    border: '1px solid #1400FF',
+                                    background: 'rgba(20,0,255,0.05)',
+                                }}
+                            >
+                                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#1400FF', display: 'block' }} />
+                                <span style={{ ...mono, fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#1400FF' }}>
+                                    {t('personal.available')}
+                                </span>
+                            </motion.div>
+
+                            <LanguageToggle />
+                        </div>
+
                     </motion.nav>
                 )}
             </AnimatePresence>

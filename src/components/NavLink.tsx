@@ -38,23 +38,22 @@ export default function NavLink({ item }: NavLinkProps) {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault()
 
-        if (isHome && scrollId) {
-            document.getElementById(scrollId)?.scrollIntoView({ behavior: 'smooth' })
-            return
-        }
-
         if (item === 'home') {
             router.push('/')
             return
         }
 
         if (item === 'contact') {
-            const element = document.getElementById('contact')
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                return
+            if (isHome) {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            } else {
+                router.push('/#contact')
             }
-            window.location.href = '/#contact'
+            return
+        }
+
+        if (isHome && scrollId) {
+            document.getElementById(scrollId)?.scrollIntoView({ behavior: 'smooth' })
             return
         }
 

@@ -12,6 +12,7 @@ const HOME_SECTIONS: TrackerSection[] = [
   { id: 'contact', labelKey: 'contact' },
 ]
 
+
 export default function Home() {
   return (
     <main>

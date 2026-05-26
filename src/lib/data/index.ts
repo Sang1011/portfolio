@@ -13,6 +13,18 @@ export type ProjectStatus = 'live' | 'ui-only' | 'private'
 export type GalleryType = 'desktop' | 'mobile' | 'mixed'
 export type Locale = 'en' | 'vi'
 
+export const HERO_TAGS = [
+    // Frontend
+    'React', 'Next.js', 'TypeScript',
+    // Backend
+    'ASP.NET Core', 'NestJS', 'C#',
+    // Mobile
+    'React Native',
+    // Database & Tooling
+    'PostgreSQL', 'Docker', 'Redis',
+]
+
+
 export const personal = {
     name: 'Nguyễn Hoàng Tuệ Sang',
     handle: '@sang1011',
@@ -257,6 +269,8 @@ export const projects: ProjectMeta[] = [
     },
 ]
 
+export const MARQUEE_TAGS = skillGroups.flatMap(g => g.skills)
+
 export const roleLabel: Record<ProjectRole, string> = {
     FE: 'Frontend',
     BE: 'Backend',
@@ -278,3 +292,4 @@ export const getFeaturedProjects = () =>
 
 export const getProjectsByRole = (role: ProjectRole) =>
     projects.filter((p) => p.role.includes(role))
+

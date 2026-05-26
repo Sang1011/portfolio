@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { personal } from '@/lib/data'
-import { useTranslation } from '@/lib/hooks'
+import { useIsMobile, useTranslation } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
@@ -41,21 +41,29 @@ function SocialLink({ label, href }: { label: string; href: string }) {
 export default function ContactSection() {
     const { t } = useTranslation()
     const [copied, setCopied] = useState(false)
-
+    const [copiedPhone, setCopiedPhone] = useState(false)
+    const isMobile = useIsMobile('md')
     const handleCopy = () => {
         navigator.clipboard.writeText(personal.links.email)
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
     }
 
+
+    const handleCopyPhone = () => {
+        navigator.clipboard.writeText(personal.phone)
+        setCopiedPhone(true)
+        setTimeout(() => setCopiedPhone(false), 2000)
+    }
+
     return (
         <section
             id="contact"
             style={{
-                minHeight: '80vh',
+                minHeight: '70vh',
                 display: 'flex',
                 alignItems: 'center',
-                padding: '120px 48px',
+                padding: '10px 48px 120px 48px',
                 maxWidth: 1100,
                 margin: '0 auto',
                 position: 'relative',
@@ -77,7 +85,14 @@ export default function ContactSection() {
                     </span>
                 </motion.div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 64, alignItems: 'flex-end' }}>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : '1fr auto',
+                        gap: isMobile ? 32 : 64,
+                        alignItems: isMobile ? 'flex-start' : 'flex-end',
+                    }}
+                >
                     {/* left */}
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
@@ -125,6 +140,30 @@ export default function ContactSection() {
                                 {copied ? t('ui.contact.copied') : t('ui.contact.copy')}
                             </motion.button>
                         </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 10 }}>
+                            <a
+                                href={`tel:${personal.phone}`}
+                                style={{ ...mono, fontSize: 13, letterSpacing: '0.05em', color: '#111', textDecoration: 'none' }}
+                            >
+                                {t('personal.phoneLabel')}: {personal.phone}
+                            </a>
+
+                            <motion.button
+                                onClick={handleCopyPhone}
+                                whileTap={{ scale: 0.94 }}
+                                style={{
+                                    all: 'unset',
+                                    cursor: 'pointer',
+                                    ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
+                                    color: copiedPhone ? '#1400FF' : 'rgba(0,0,0,0.35)',
+                                    border: `1px solid ${copiedPhone ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
+                                    padding: '5px 12px',
+                                    transition: 'all 0.2s',
+                                }}
+                            >
+                                {copiedPhone ? t('ui.contact.copied') : t('ui.contact.copy')}
+                            </motion.button>
+                        </div>
                     </motion.div>
 
                     {/* right — socials */}
@@ -165,7 +204,7 @@ export default function ContactSection() {
                         {t('ui.footer.name')}
                     </span>
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     )
 }

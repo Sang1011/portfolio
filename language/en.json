@@ -9,7 +9,7 @@
     "hero": {
       "cta": "View Projects",
       "contact": "Contact",
-      "greeting": "Hello, I'm",
+      "greeting": "Hello, I'm Sang",
       "bio": "Software Engineer specializing in building web and mobile applications with modern technologies."
     },
     "about": {
@@ -26,10 +26,11 @@
       "projects": "Projects",
       "contact": "Contact",
       "intro": "Intro",
-      "skills": "Skills"
+      "skills": "Skills",
+      "documents": "Documents"
     },
     "projects": {
-      "sectionLabel": "Selected Projects",
+      "sectionLabel": "Projects",
       "viewAll": "View All Projects",
       "filterAll": "All",
       "filterFE": "Frontend",
@@ -73,6 +74,8 @@
     "title": "Fullstack Developer",
     "location": "Ho Chi Minh City, VN",
     "available": "Open to Work",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
     "bioArray": [
       "FPT University graduate in Software Engineering (.NET track). Builds across the full stack — React, Next.js on the frontend, ASP.NET Core and NestJS on the backend.",
       "Ships mobile with React Native and Expo. Not afraid to pick up new technologies and jump into unfamiliar domains to get things done."

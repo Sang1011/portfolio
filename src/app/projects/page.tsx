@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { projects } from '@/lib/data'
 import type { ProjectRole } from '@/lib/data'
-import { useTranslation } from '@/lib/hooks'
+import { useTranslation, useIsMobile } from '@/lib/hooks'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
@@ -16,11 +16,12 @@ const STATUS_COLOR: Record<string, string> = {
     private: 'rgba(0,0,0,0.35)',
 }
 
-function ProjectRow({ project, index, t }: {
+function ProjectRow({ project, index, t, isMobile }: {
     project: typeof projects[0]
     index: number
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     t: any
+    isMobile: boolean
 }) {
     const [hovered, setHovered] = useState(false)
     const [imgPos, setImgPos] = useState({ x: 0, y: 0 })
@@ -45,45 +46,60 @@ function ProjectRow({ project, index, t }: {
                     style={{
                         position: 'relative',
                         display: 'grid',
-                        gridTemplateColumns: '64px 1fr auto',
-                        alignItems: 'center',
-                        gap: 32,
-                        padding: '28px 0',
+                        gridTemplateColumns: isMobile ? '32px 1fr' : '64px 1fr auto',
+                        alignItems: isMobile ? 'flex-start' : 'center',
+                        gap: isMobile ? 16 : 32,
+                        padding: isMobile ? '20px 0' : '28px 0',
                         borderBottom: '1px solid rgba(0,0,0,0.08)',
-                        cursor: 'none',
+                        cursor: isMobile ? 'pointer' : 'none',
                         transition: 'background 0.2s',
                         background: hovered ? 'rgba(20,0,255,0.02)' : 'transparent',
                     }}
                 >
                     {/* index */}
                     <span style={{
-                        ...mono, fontSize: 10, letterSpacing: '0.3em',
+                        ...mono,
+                        fontSize: 10,
+                        letterSpacing: '0.3em',
                         color: hovered ? '#1400FF' : 'rgba(0,0,0,0.48)',
                         transition: 'color 0.2s',
+                        paddingTop: isMobile ? 2 : 0,
                     }}>
                         [{String(index + 1).padStart(2, '0')}]
                     </span>
 
                     {/* main info */}
                     <div>
-                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 8 }}>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            gap: isMobile ? 8 : 16,
+                            marginBottom: 8,
+                            flexWrap: 'wrap',
+                        }}>
                             <h3 style={{
-                                ...sans, fontSize: 'clamp(1.1rem, 2.2vw, 1.7rem)',
-                                fontWeight: 800, letterSpacing: '-0.02em',
+                                ...sans,
+                                fontSize: isMobile ? '1.1rem' : 'clamp(1.1rem, 2.2vw, 1.7rem)',
+                                fontWeight: 800,
+                                letterSpacing: '-0.02em',
                                 color: hovered ? '#1400FF' : '#111',
-                                margin: 0, transition: 'color 0.2s',
+                                margin: 0,
+                                transition: 'color 0.2s',
                             }}>
                                 {project.title}
                             </h3>
-                            {/* role badge */}
-                            {project.role.map(r => (
-                                <span key={r} style={{
-                                    ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
-                                    color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)', padding: '2px 8px',
-                                }}>
-                                    {t(`ui.project.role.${r}`)}
-                                </span>
-                            ))}
+
+                            {/* role badges */}
+                            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                                {project.role.map(r => (
+                                    <span key={r} style={{
+                                        ...mono, fontSize: 10, letterSpacing: '0.35em', textTransform: 'uppercase',
+                                        color: '#1400FF', border: '1px solid rgba(20,0,255,0.3)', padding: '2px 8px',
+                                    }}>
+                                        {t(`ui.project.role.${r}`)}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
 
                         <p style={{
@@ -95,61 +111,95 @@ function ProjectRow({ project, index, t }: {
 
                         {/* tech tags */}
                         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                            {project.tech.slice(0, 5).map(t => (
-                                <span key={t} style={{
+                            {project.tech.slice(0, 5).map(tech => (
+                                <span key={tech} style={{
                                     ...mono, fontSize: 10, letterSpacing: '0.25em',
                                     textTransform: 'uppercase', color: 'rgba(0,0,0,0.32)',
                                     border: '1px solid rgba(0,0,0,0.12)', padding: '3px 7px',
                                 }}>
-                                    {t}
+                                    {tech}
                                 </span>
                             ))}
                         </div>
-                    </div>
 
-                    {/* right: year + status */}
-                    <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                        <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)', marginBottom: 6 }}>
-                            {project.year}
-                        </div>
-                        <div style={{
-                            ...mono, fontSize: 10, letterSpacing: '0.3em',
-                            textTransform: 'uppercase',
-                            color: STATUS_COLOR[project.status],
-                        }}>
-                            {t(project.status === 'live' ? 'ui.project.statusLive' : project.status === 'private' ? 'ui.project.statusPrivate' : 'ui.project.statusUiOnly')}
-                        </div>
-                    </div>
-
-                    {/* hover image preview */}
-                    <AnimatePresence>
-                        {hovered && project.thumbnail && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.92 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.92 }}
-                                transition={{ duration: 0.18 }}
-                                style={{
-                                    position: 'absolute',
-                                    left: imgPos.x + 20,
-                                    top: imgPos.y - 80,
-                                    width: 220,
-                                    height: 140,
-                                    pointerEvents: 'none',
-                                    zIndex: 50,
-                                    overflow: 'hidden',
-                                    border: '1px solid rgba(0,0,0,0.12)',
-                                    background: '#fff',
-                                }}
-                            >
-                                <img
-                                    src={project.thumbnail}
-                                    alt={project.title}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                />
-                            </motion.div>
+                        {/* Mobile: year + status inline dưới tech tags */}
+                        {isMobile && (
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                marginTop: 12,
+                            }}>
+                                <span style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)' }}>
+                                    {project.year}
+                                </span>
+                                <span style={{
+                                    ...mono, fontSize: 10, letterSpacing: '0.3em',
+                                    textTransform: 'uppercase',
+                                    color: STATUS_COLOR[project.status],
+                                    display: 'flex', alignItems: 'center', gap: 6,
+                                }}>
+                                    {t(project.status === 'live'
+                                        ? 'ui.project.statusLive'
+                                        : project.status === 'private'
+                                            ? 'ui.project.statusPrivate'
+                                            : 'ui.project.statusUiOnly')} →
+                                </span>
+                            </div>
                         )}
-                    </AnimatePresence>
+                    </div>
+
+                    {/* Desktop: year + status column bên phải */}
+                    {!isMobile && (
+                        <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                            <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)', marginBottom: 6 }}>
+                                {project.year}
+                            </div>
+                            <div style={{
+                                ...mono, fontSize: 10, letterSpacing: '0.3em',
+                                textTransform: 'uppercase',
+                                color: STATUS_COLOR[project.status],
+                            }}>
+                                {t(project.status === 'live'
+                                    ? 'ui.project.statusLive'
+                                    : project.status === 'private'
+                                        ? 'ui.project.statusPrivate'
+                                        : 'ui.project.statusUiOnly')}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* hover image preview — desktop only */}
+                    {!isMobile && (
+                        <AnimatePresence>
+                            {hovered && project.thumbnail && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.92 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.92 }}
+                                    transition={{ duration: 0.18 }}
+                                    style={{
+                                        position: 'absolute',
+                                        left: imgPos.x + 20,
+                                        top: imgPos.y - 80,
+                                        width: 220,
+                                        height: 140,
+                                        pointerEvents: 'none',
+                                        zIndex: 50,
+                                        overflow: 'hidden',
+                                        border: '1px solid rgba(0,0,0,0.12)',
+                                        background: '#fff',
+                                    }}
+                                >
+                                    <img
+                                        src={project.thumbnail}
+                                        alt={project.title}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    )}
                 </div>
             </Link>
         </motion.div>
@@ -166,6 +216,7 @@ const FILTER_KEYS = {
 
 export default function ProjectsPage() {
     const { t } = useTranslation()
+    const isMobile = useIsMobile('md')
     const [filter, setFilter] = useState<ProjectRole | 'All'>('All')
 
     const filtered = filter === 'All'
@@ -173,15 +224,21 @@ export default function ProjectsPage() {
         : projects.filter(p => p.role.includes(filter))
 
     return (
-        <main style={{ background: '#FAFAF8', minHeight: '100vh', cursor: 'crosshair' }}>
-            <div style={{ position: 'relative', zIndex: 1, maxWidth: 1100, margin: '0 auto', padding: '80px 48px 120px' }}>
+        <main style={{ background: '#FAFAF8', minHeight: '100vh', cursor: isMobile ? 'auto' : 'crosshair' }}>
+            <div style={{
+                position: 'relative',
+                zIndex: 1,
+                maxWidth: 1100,
+                margin: '0 auto',
+                padding: isMobile ? '56px 20px 80px' : '80px 48px 120px',
+            }}>
 
                 {/* header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={{ marginBottom: 64 }}
+                    style={{ marginBottom: isMobile ? 40 : 64 }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
                         <span style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', color: '#1400FF' }}>01</span>
@@ -191,40 +248,103 @@ export default function ProjectsPage() {
                         </span>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32 }}>
-                        <h1 style={{
-                            ...sans, fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
-                            fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.95,
-                            color: '#111', margin: 0,
-                        }}>
-                            PROJECTS<span style={{ color: '#1400FF' }}>.</span>
-                        </h1>
+                    {isMobile ? (
+                        <>
+                            <h1 style={{
+                                ...sans,
+                                fontSize: 'clamp(2.4rem, 12vw, 3.5rem)',
+                                fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.95,
+                                color: '#111', margin: '0 0 24px',
+                            }}>
+                                PROJECTS<span style={{ color: '#1400FF' }}>.</span>
+                            </h1>
 
-                        {/* filter bar */}
-                        <div style={{ display: 'flex', gap: 6, flexShrink: 0, paddingBottom: 4 }}>
-                            {(Object.keys(FILTER_KEYS) as Array<keyof typeof FILTER_KEYS>).map(f => {
-                                const active = filter === f
-                                return (
-                                    <button
-                                        key={f}
-                                        onClick={() => setFilter(f)}
-                                        style={{
-                                            ...mono, fontSize: 10, letterSpacing: '0.3em',
-                                            textTransform: 'uppercase',
-                                            padding: '6px 14px',
-                                            border: `1px solid ${active ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
-                                            background: active ? '#1400FF' : 'transparent',
-                                            color: active ? '#fff' : 'rgba(0,0,0,0.6)',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.16s',
-                                        }}
-                                    >
-                                        {t(FILTER_KEYS[f])}
-                                    </button>
-                                )
-                            })}
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                                <div style={{ display: 'flex', gap: 6 }}>
+                                    {(['All', 'FE', 'BE'] as const).map(f => {
+                                        const active = filter === f
+                                        return (
+                                            <button
+                                                key={f}
+                                                onClick={() => setFilter(f)}
+                                                style={{
+                                                    ...mono, fontSize: 10, letterSpacing: '0.3em',
+                                                    textTransform: 'uppercase',
+                                                    padding: '8px 0',
+                                                    flex: 1,
+                                                    border: `1px solid ${active ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
+                                                    background: active ? '#1400FF' : 'transparent',
+                                                    color: active ? '#fff' : 'rgba(0,0,0,0.6)',
+                                                    cursor: 'pointer',
+                                                    transition: 'all 0.16s',
+                                                }}
+                                            >
+                                                {t(FILTER_KEYS[f])}
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                                <div style={{ display: 'flex', gap: 6 }}>
+                                    {(['Mobile', 'Fullstack'] as const).map(f => {
+                                        const active = filter === f
+                                        return (
+                                            <button
+                                                key={f}
+                                                onClick={() => setFilter(f)}
+                                                style={{
+                                                    ...mono, fontSize: 10, letterSpacing: '0.3em',
+                                                    textTransform: 'uppercase',
+                                                    padding: '8px 0',
+                                                    flex: 1,
+                                                    border: `1px solid ${active ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
+                                                    background: active ? '#1400FF' : 'transparent',
+                                                    color: active ? '#fff' : 'rgba(0,0,0,0.6)',
+                                                    cursor: 'pointer',
+                                                    transition: 'all 0.16s',
+                                                }}
+                                            >
+                                                {t(FILTER_KEYS[f])}
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32 }}>
+                            <h1 style={{
+                                ...sans, fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
+                                fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 0.95,
+                                color: '#111', margin: 0,
+                            }}>
+                                PROJECTS<span style={{ color: '#1400FF' }}>.</span>
+                            </h1>
+
+                            <div style={{ display: 'flex', gap: 6, flexShrink: 0, paddingBottom: 4 }}>
+                                {(Object.keys(FILTER_KEYS) as Array<keyof typeof FILTER_KEYS>).map(f => {
+                                    const active = filter === f
+                                    return (
+                                        <button
+                                            key={f}
+                                            onClick={() => setFilter(f)}
+                                            style={{
+                                                ...mono, fontSize: 10, letterSpacing: '0.3em',
+                                                textTransform: 'uppercase',
+                                                padding: '6px 14px',
+                                                border: `1px solid ${active ? '#1400FF' : 'rgba(0,0,0,0.15)'}`,
+                                                background: active ? '#1400FF' : 'transparent',
+                                                color: active ? '#fff' : 'rgba(0,0,0,0.6)',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.16s',
+                                            }}
+                                        >
+                                            {t(FILTER_KEYS[f])}
+                                        </button>
+                                    )
+                                })}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </motion.div>
 
                 {/* project count */}
@@ -246,7 +366,7 @@ export default function ProjectsPage() {
                         transition={{ duration: 0.2 }}
                     >
                         {filtered.map((p, i) => (
-                            <ProjectRow key={p.id} project={p} index={i} t={t} />
+                            <ProjectRow key={p.id} project={p} index={i} t={t} isMobile={isMobile} />
                         ))}
                     </motion.div>
                 </AnimatePresence>

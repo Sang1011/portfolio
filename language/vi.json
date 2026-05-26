@@ -9,7 +9,7 @@
     "hero": {
       "cta": "Xem dự án",
       "contact": "Liên hệ",
-      "greeting": "Xin chào, tôi là",
+      "greeting": "Xin chào, tôi là Sang",
       "bio": "Kỹ sư phần mềm chuyên về phát triển ứng dụng web và mobile với các công nghệ hiện đại."
     },
     "about": {
@@ -26,10 +26,11 @@
       "projects": "Dự án",
       "contact": "Liên hệ",
       "intro": "Giới thiệu",
-      "skills": "Kỹ năng"
+      "skills": "Kỹ năng",
+      "documents": "Tài liệu"
     },
     "projects": {
-      "sectionLabel": "Dự án đã chọn",
+      "sectionLabel": "Dự án",
       "viewAll": "Xem tất cả dự án",
       "filterAll": "Tất cả",
       "filterFE": "Frontend",
@@ -71,8 +72,10 @@
     "gender": "Nữ",
     "dateOfBirth": "15/10/2004",
     "title": "Lập trình viên Fullstack",
-    "location": "TP. Hồ Chí Minh, VN",
+    "location": "TP.Hồ Chí Minh, VN",
     "available": "Sẵn sàng làm việc",
+    "phoneLabel": "Số điện thoại",
+    "emailLabel": "Email",
     "bioArray": [
       "Tốt nghiệp Kỹ thuật Phần mềm tại FPT University chuyên ngành .NET. Phát triển toàn stack — React, Next.js ở frontend, ASP.NET Core và NestJS ở backend.",
       "Làm mobile với React Native và Expo. Không ngại học hỏi công nghệ mới và bước vào những lĩnh vực chưa quen để hoàn thành công việc."

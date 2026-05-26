@@ -1,15 +1,17 @@
 'use client'
 
-import { personal, TAGS } from '@/lib/data'
+import { HERO_TAGS, personal } from '@/lib/data'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useTranslation } from '@/lib/hooks'
+import { useIsMobile, useTranslation } from '@/lib/hooks'
+import SkillTag from './SkillTag'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
 
 export default function AboutPreviewSection() {
     const { t, messages } = useTranslation()
+    const isMobile = useIsMobile('md')
 
     return (
         <section
@@ -18,22 +20,22 @@ export default function AboutPreviewSection() {
                 minHeight: '100vh',
                 display: 'flex',
                 alignItems: 'center',
-                padding: '120px 48px',
+                padding: isMobile ? '80px 24px' : '120px 48px',
                 maxWidth: 1100,
                 margin: '0 auto',
             }}
         >
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: 96,
+                gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                gap: isMobile ? 48 : 96,
                 alignItems: 'center',
                 width: '100%',
             }}>
                 {/* LEFT — avatar */}
                 <motion.div
-                    initial={{ opacity: 0, x: -24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: isMobile ? 0 : -24, y: isMobile ? 16 : 0 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.7 }}
                     style={{ position: 'relative' }}
@@ -50,11 +52,7 @@ export default function AboutPreviewSection() {
                         src="/avatar.jpg"
                         alt={personal.name}
                         style={{
-                            width: '100%',
-                            aspectRatio: '4/5',
-                            objectFit: 'cover',
-                            objectPosition: 'top',
-                            display: 'block',
+                            objectFit: 'contain',
                         }}
                     />
                     <div style={{
@@ -73,9 +71,9 @@ export default function AboutPreviewSection() {
 
                 {/* RIGHT — text */}
                 <motion.div
-                    initial={{ opacity: 0, x: 24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
+                    initial={{ opacity: 0, x: isMobile ? 0 : 24, y: isMobile ? 16 : 0 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7 }}
                 >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
@@ -88,33 +86,34 @@ export default function AboutPreviewSection() {
 
                     <h2 style={{
                         ...sans,
-                        fontSize: 'clamp(2rem, 3.5vw, 3.2rem)',
+                        fontSize: isMobile ? 'clamp(1.8rem, 8vw, 2.4rem)' : 'clamp(2rem, 3.5vw, 3.2rem)',
                         fontWeight: 900,
                         letterSpacing: '-0.03em',
                         lineHeight: 1.05,
                         color: '#111',
                         margin: '0 0 24px',
                     }}>
-                        {t('personal.title')}<br />
+                        {t('personal.title')}
                     </h2>
 
                     {messages.personal.bioArray.map((text: string) => (
-                        <p
-                            key={text}
-                            style={{
-                                ...mono,
-                                fontSize: 12.5,
-                                lineHeight: 1.85,
-                                color: 'rgba(0,0,0,0.5)',
-                                marginBottom: 12,
-                            }}
-                        >
+                        <p key={text} style={{
+                            ...mono, fontSize: 12.5, lineHeight: 1.85,
+                            color: 'rgba(0,0,0,0.5)', marginBottom: 12,
+                        }}>
                             {text}
                         </p>
                     ))}
 
                     {/* quick stats */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, border: '1px solid rgba(0,0,0,0.1)', marginBottom: 32 }}>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                        gap: 1,
+                        border: '1px solid rgba(0,0,0,0.1)',
+                        marginBottom: 32,
+                        marginTop: 24,
+                    }}>
                         {messages.personal.stats.map(({ label, value }: { label: string; value: string }) => (
                             <div key={label} style={{
                                 padding: '14px 18px',
@@ -129,28 +128,38 @@ export default function AboutPreviewSection() {
                         ))}
                         <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
                             <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
-                                {t('personal.genderLabel')}
+                                {t('personal.gender')}
                             </div>
                             <div style={{ ...mono, fontSize: 11, color: '#111' }}>{messages.personal.gender}</div>
                         </div>
                         <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
                             <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
-                                {t('personal.dobLabel')}
+                                {t('personal.dateOfBirth')}
                             </div>
                             <div style={{ ...mono, fontSize: 11, color: '#111' }}>{messages.personal.dateOfBirth}</div>
                         </div>
+                        <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
+                                {t('personal.emailLabel')}
+                            </div>
+                            <a href={`mailto:${personal.links.email}`} style={{ ...mono, fontSize: 11, color: '#1400FF', textDecoration: 'none' }}>
+                                {personal.links.email}
+                            </a>
+                        </div>
+                        <div style={{ padding: '14px 18px', borderBottom: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div style={{ ...mono, fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.52)', marginBottom: 5 }}>
+                                {t('personal.phoneLabel')}
+                            </div>
+                            <a href={`tel:${personal.phone}`} style={{ ...mono, fontSize: 11, color: '#111', textDecoration: 'none' }}>
+                                {personal.phone}
+                            </a>
+                        </div>
                     </div>
 
+                    {/* skill tags */}
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 40 }}>
-                        {TAGS.map(s => (
-                            <span key={s} style={{
-                                ...mono, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase',
-                                padding: '5px 11px',
-                                border: '1px solid rgba(0,0,0,0.13)',
-                                color: 'rgba(0,0,0,0.6)',
-                            }}>
-                                {s}
-                            </span>
+                        {HERO_TAGS.map((tag, i) => (
+                            <SkillTag key={tag} tag={tag} delay={0.9 + i * 0.05} />
                         ))}
                     </div>
 
