@@ -272,6 +272,25 @@
         "Implement side effect theo Event-Driven: gửi email xác nhận booking, thông báo hủy lịch và nhắc nhở trước 24 giờ qua domain events.",
         "Containerize với Docker Compose (PostgreSQL + Redis) và cấu hình Swagger với JWT Bearer support cho toàn bộ API documentation."
       ]
+    },
+    {
+      "id": "hair-salon-booking",
+      "slug": "hair-harmony",
+      "title": "Hair Harmony",
+      "subtitle": "Hệ thống đặt lịch trực tuyến cho salon tóc",
+      "year": 2024,
+      "period": "Sep 2024 – Nov 2024",
+      "description": "Hair Harmony là nền tảng đặt lịch cho salon tóc, hỗ trợ khách hàng đặt lịch hẹn, chọn stylist, chọn dịch vụ và gửi đánh giá sau khi sử dụng. Nhân viên có thể quản lý lịch hẹn và hoạt động vận hành, stylist có thể theo dõi lịch làm việc và hoa hồng, trong khi chủ salon có thể theo dõi doanh thu và quản lý tài chính. Hệ thống cũng hỗ trợ xử lý dữ liệu người dùng an toàn và các nghiệp vụ liên quan đến lịch hẹn.",
+      "myContributions": [
+        "Xây dựng toàn bộ giao diện dashboard cho vai trò Staff, bao gồm các màn hình quản lý lịch hẹn, dịch vụ và các nghiệp vụ vận hành trong salon.",
+        "Xây dựng toàn bộ giao diện dashboard cho vai trò Stylist, hỗ trợ stylist xem lịch hẹn được phân công, thông tin công việc và dữ liệu liên quan đến hoa hồng.",
+        "Phát triển các component frontend có thể tái sử dụng và bố cục dashboard thống nhất cho hai vai trò Staff và Stylist.",
+        "Tích hợp các màn hình Staff và Stylist với backend API để hiển thị dữ liệu lịch hẹn, dịch vụ, stylist và các thông tin liên quan.",
+        "Xử lý form, bảng dữ liệu, bộ lọc và giao diện thay đổi theo trạng thái trong các luồng quản lý của dashboard.",
+        "Phát triển chức năng thanh toán phía backend, bao gồm logic nghiệp vụ liên quan đến thanh toán trong quy trình đặt lịch.",
+        "Xây dựng API và xử lý dữ liệu thanh toán nhằm hỗ trợ theo dõi thanh toán lịch hẹn và quản lý tài chính.",
+        "Phối hợp với các thành viên frontend và backend khác để đảm bảo các luồng dashboard theo vai trò hoạt động ổn định trong toàn hệ thống."
+      ]
     }
   ]
 }

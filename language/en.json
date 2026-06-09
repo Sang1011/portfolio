@@ -272,6 +272,25 @@
         "Implemented event-driven side effects: booking confirmation emails, cancellation notifications, and 24-hour reminder jobs via domain events.",
         "Containerized with Docker Compose (PostgreSQL + Redis) and configured Swagger with JWT Bearer support for full API documentation."
       ]
+    },
+    {
+      "id": "hair-salon-booking",
+      "slug": "hair-harmony",
+      "title": "Hair Harmony",
+      "subtitle": "Online Booking System for Hair Salons",
+      "year": 2024,
+      "period": "Sep 2024 – Nov 2024",
+      "description": "HairHarmony is a hair salon booking platform for scheduling appointments, selecting stylists and services, and providing feedback. Staff can manage appointments and service operations, stylists can track their assigned bookings and commissions, while salon owners can monitor earnings and manage financial activities. The platform also supports secure user data handling and appointment-related customer support.",
+      "myContributions": [
+        "Built the full Staff dashboard UI, including appointment management screens, service-related views, and operational interfaces for salon staff.",
+        "Built the full Stylist dashboard UI, allowing stylists to view assigned appointments, manage work-related information, and track commission-related data.",
+        "Developed reusable frontend components and page layouts for the Staff and Stylist roles to keep the dashboard structure consistent and maintainable.",
+        "Integrated Staff and Stylist frontend screens with backend APIs for displaying booking, service, stylist, and appointment-related data.",
+        "Implemented frontend form handling, table views, filtering, and status-based UI behavior for dashboard management flows.",
+        "Developed backend payment features for handling payment-related business logic in the booking flow.",
+        "Implemented payment data processing and API endpoints to support appointment payment tracking and financial management.",
+        "Collaborated with other team members to connect frontend role-based dashboards with backend services and ensure smooth system integration."
+      ]
     }
   ]
 }

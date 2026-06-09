@@ -265,6 +265,30 @@ export const projects: ProjectMeta[] = [
         },
         featured: true,
     },
+    {
+        id: 'hair-salon-booking',
+        slug: 'hair-harmony',
+        title: 'Hair Harmony',
+        subtitle: 'Online Booking System for Hair Salons',
+        galleryType: 'desktop',
+        period: 'Sep 2024 – Nov 2024',
+        year: 2025,
+        role: ['Fullstack'],
+        tech: ['C#'],
+        status: 'private',
+        images: [
+            '/projects/hair-salon-booking/1.png',
+            '/projects/hair-salon-booking/2.png',
+            '/projects/hair-salon-booking/3.png',
+            '/projects/hair-salon-booking/4.png',
+        ],
+        thumbnail: '/projects/hair-salon-booking/1.png',
+        links: {
+            githubFE: 'https://github.com/tranchithuan08dev/HairSalonBooking',
+            github: 'https://github.com/machgiahao/HairSalonBookingApp'
+        },
+        featured: true,
+    },
 ]
 
 export const MARQUEE_TAGS = skillGroups.flatMap(g => g.skills)
