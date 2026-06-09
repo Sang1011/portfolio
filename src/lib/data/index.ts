@@ -196,7 +196,7 @@ export const projects: ProjectMeta[] = [
         thumbnail: '/projects/aipromo/1.png',
         links: {
             demo: 'https://aipromo.online/',
-            github: 'https://github.com/Sang1011/AIPromo-Web',
+            githubFE: 'https://github.com/Sang1011/AIPromo-Web',
             apk: 'https://apkpure.com/p/com.sangnguyen1011.aipromomobile',
         },
         featured: true,
@@ -221,7 +221,7 @@ export const projects: ProjectMeta[] = [
         ],
         thumbnail: '/projects/smartcalo/image.png',
         links: {
-            github: 'https://github.com/Sang1011/SmartCaloFE',
+            githubFE: 'https://github.com/Sang1011/SmartCaloFE',
             apk: 'https://apkpure.com/smart-calo/com.penta.smartcalo',
             landing: 'https://smartcalo-landingpage.vercel.app/',
         },
@@ -242,8 +242,6 @@ export const projects: ProjectMeta[] = [
         thumbnail: '',
         links: {
             github: 'https://github.com/Sang1011/BloodDonation-BE',
-            githubFE: 'https://github.com/lvstants/BloodDonationASS',
-            demo: 'https://blood-donation-ass.vercel.app/'
         },
         featured: true,
     },
