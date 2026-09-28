@@ -1,5 +1,5 @@
 export type TechTag =
-    | 'React' | 'React Native' | 'Next.js' | 'TypeScript' | 'JavaScript'
+    | 'ReactJS' | 'React Native' | 'Next.js' | 'TypeScript' | 'JavaScript'
     | 'C#' | '.NET' | 'ASP.NET' | 'Node.js' | 'NestJS'
     | 'TailwindCSS' | 'SQL Server' | 'PostgreSQL' | 'MongoDB'
     | 'Redis' | 'Docker' | 'Azure' | 'REST API' | 'SignalR'
@@ -15,7 +15,7 @@ export type Locale = 'en' | 'vi'
 
 export const HERO_TAGS = [
     // Frontend
-    'React', 'Next.js', 'TypeScript',
+    'ReactJS', 'Next.js', 'TypeScript',
     // Backend
     'ASP.NET Core', 'NestJS', 'C#',
     // Mobile
@@ -57,7 +57,7 @@ export const personal = {
 export const skillGroups = [
     {
         label: 'Frontend',
-        skills: ['React', 'Next.js', 'React Native', 'TypeScript', 'JavaScript', 'TailwindCSS', 'SCSS', 'Redux', 'Framer Motion'],
+        skills: ['ReactJS', 'Next.js', 'React Native', 'TypeScript', 'JavaScript', 'TailwindCSS', 'SCSS', 'Redux', 'Framer Motion'],
     },
     {
         label: 'Backend',
@@ -183,7 +183,7 @@ export const projects: ProjectMeta[] = [
         year: 2026,
         period: 'Jan 2026 – Apr 2026',
         role: ['FE', 'Mobile'],
-        tech: ['React', 'TypeScript', 'TailwindCSS', 'Redux', 'React Native', 'Firebase', 'Recharts', 'React-Konva', 'DnD Kit', 'VNPay'],
+        tech: ['ReactJS', 'TypeScript', 'TailwindCSS', 'Redux', 'React Native', 'Firebase', 'Recharts', 'React-Konva', 'DnD Kit', 'VNPay'],
         status: 'live',
         images: [
             '/projects/aipromo/1.png',
@@ -274,7 +274,7 @@ export const projects: ProjectMeta[] = [
         period: 'Sep 2024 – Nov 2024',
         year: 2025,
         role: ['Fullstack'],
-        tech: ['C#'],
+        tech: ['C#', 'ASP.NET', 'MongoDB', 'ReactJS'],
         status: 'private',
         images: [
             '/projects/hair-salon-booking/1.png',

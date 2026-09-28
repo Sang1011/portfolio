@@ -49,7 +49,7 @@ export default function AboutPreviewSection() {
                         <div key={i} style={{ position: 'absolute', width: 16, height: 16, ...s }} />
                     ))}
                     <img
-                        src="/avatar.jpg"
+                        src="/avatar.png"
                         alt={personal.name}
                         style={{
                             objectFit: 'contain',
