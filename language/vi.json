@@ -301,7 +301,7 @@
       "period": "Tháng 9/2026 – Hiện tại",
       "description": "Nền tảng họp thông minh tích hợp AI, cho phép ghi âm hoặc tải lên cuộc họp, chuyển giọng nói thành văn bản tiếng Việt và tiếng Anh, rồi tạo biên bản họp có cấu trúc. Xây dựng với frontend React, backend ASP.NET Core theo Clean Architecture và service speech-to-text bằng Python chạy trên GPU.",
       "myContributions": [
-        "Xây dựng frontend bằng React 19, TypeScript, Vite, TailwindCSS và Redux Toolkit, gồm hệ thống theme theo design token với kiểm tra token và độ tương phản WCAG tự động, cùng bộ component tái sử dụng dựa trên class-variance-authority.",
+        "Xây dựng frontend bằng React, TypeScript, Vite, TailwindCSS và Redux Toolkit, gồm hệ thống theme theo design token với kiểm tra token và độ tương phản WCAG tự động, cùng bộ component tái sử dụng dựa trên class-variance-authority.",
         "Implement ghi âm trực tiếp trên trình duyệt bằng Web Audio API (AudioWorklet), gửi các chunk PCM 16 kHz với cơ chế retry và xử lý chunk đến sai thứ tự.",
         "Thiết kế backend ASP.NET Core (.NET 10) theo Clean Architecture với điều phối job bất đồng bộ và AI service có thể thay thế qua HTTP.",
         "Xây dựng service speech-to-text bằng FastAPI với faster-whisper (Whisper large-v3-turbo), batched GPU inference và Silero VAD, hỗ trợ tiếng Việt và tiếng Anh, có job queue, theo dõi tiến độ và hủy job.",
