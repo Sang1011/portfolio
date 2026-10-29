@@ -291,6 +291,26 @@
         "Implemented payment data processing and API endpoints to support appointment payment tracking and financial management.",
         "Collaborated with other team members to connect frontend role-based dashboards with backend services and ensure smooth system integration."
       ]
+    },
+    {
+      "id": "spacevit",
+      "slug": "spacevit",
+      "title": "SpaceVit",
+      "subtitle": "AI Meeting Workspace",
+      "year": 2026,
+      "period": "Sep 2026 – Present",
+      "description": "Full-stack AI meeting workspace that records or uploads meetings, transcribes speech in Vietnamese and English, and generates structured meeting summaries. Built with a React frontend, a Clean Architecture ASP.NET Core backend, and a GPU-accelerated Python speech-to-text service.",
+      "myContributions": [
+        "Built the frontend with React, TypeScript, Vite, TailwindCSS and Redux Toolkit, including a design-token theme system with automated token and WCAG contrast checks, and a reusable component library built on class-variance-authority.",
+        "Implemented live recording in the browser using Web Audio API (AudioWorklet), streaming 16 kHz PCM chunks with retries and out-of-order chunk handling.",
+        "Designed a Clean Architecture ASP.NET Core (.NET 10) backend with asynchronous job orchestration and a pluggable HTTP-based AI service.",
+        "Built a FastAPI speech-to-text service using faster-whisper (Whisper large-v3-turbo), batched GPU inference, and Silero VAD, supporting Vietnamese and English, with job queues, progress tracking, and cancellation.",
+        "Implemented incremental transcription for live sessions, so transcripts are produced while the meeting is still being recorded.",
+        "Integrated Gemini API for structured meeting summaries with validation, retries, and transcript preservation on failure.",
+        "Implemented streaming uploads up to 2 GB with shared storage between services.",
+        "Deployed with Docker Compose (PostgreSQL + pgvector, Redis, GPU support).",
+        "Added automated tests for STT, live sessions, and browser recording, plus an end-to-end client simulator."
+      ]
     }
   ]
 }

@@ -175,9 +175,9 @@
   ],
   "education": {
     "school": "Đại học FPT — Cơ sở TP. Hồ Chí Minh",
-    "period": "Sep 2022 – Apr 2026",
+    "period": "Tháng 9/2022 – Tháng 4/2026",
     "degree": "Cử nhân Kỹ thuật Phần mềm",
-    "major": "Chuyên ngành .NET Development"
+    "major": "Chuyên ngành .NET"
   },
   "projects": [
     {
@@ -186,7 +186,7 @@
       "title": "AIPromo",
       "subtitle": "Nền tảng Marketing Thông Minh & Bán Vé Sự Kiện — Đồ Án Tốt Nghiệp",
       "year": 2026,
-      "period": "Jan 2026 – Apr 2026",
+      "period": "Tháng 1/2026 – Tháng 4/2026",
       "description": "Nền tảng quản lý sự kiện toàn diện với trình chỉnh sửa sơ đồ chỗ ngồi tương tác, trình soạn thảo nội dung marketing AI, và app mobile quét mã QR check-in. Được xây dựng như đồ án tốt nghiệp với team đầy đủ, bao gồm web, mobile, tích hợp thanh toán và kiến trúc hệ thống.",
       "myContributions": [
         "Xây dựng trình chỉnh sửa sơ đồ chỗ ngồi tương tác bằng React-Konva, hỗ trợ kéo thả để tạo và chỉnh sửa ghế, khu vực và phân khu cho cấu hình layout sự kiện.",
@@ -205,7 +205,7 @@
       "title": "SmartCalo",
       "subtitle": "Ứng Dụng Quản Lý Dinh Dưỡng & Calo",
       "year": 2025,
-      "period": "Oct 2025 – Nov 2025",
+      "period": "Tháng 10/2025 – Tháng 11/2025",
       "description": "Ứng dụng React Native đầy đủ tính năng để theo dõi calo, quản lý dinh dưỡng và lập kế hoạch bữa ăn cá nhân hóa. Tích hợp nhận diện thực phẩm bằng AI qua camera, tính toán TDEE và theo dõi tiến trình với biểu đồ trực quan.",
       "myContributions": [
         "Xây dựng ứng dụng mobile đầy đủ tính năng cho việc theo dõi calo, quản lý dinh dưỡng và lập kế hoạch bữa ăn cá nhân hóa.",
@@ -221,7 +221,7 @@
       "title": "BloodDonation",
       "subtitle": "Hệ Thống Quản Lý Hiến Máu & Logistics",
       "year": 2025,
-      "period": "May 2025 – Jul 2025",
+      "period": "Tháng 5/2025 – Tháng 7/2025",
       "description": "Hệ thống backend API cho quản lý vòng đời hiến máu toàn diện — từ đăng ký người hiến, lên lịch hiến máu đến quản lý tồn kho máu, logistics vận chuyển và yêu cầu máu từ bệnh viện theo thời gian thực. Xây dựng bằng NestJS và triển khai qua Docker/Railway.",
       "myContributions": [
         "Thiết kế và implement RESTful API cho quản lý vòng đời hiến máu toàn diện, bao gồm đăng ký người hiến, lên lịch hiến máu, theo dõi tồn kho máu và yêu cầu máu từ bệnh viện.",
@@ -242,7 +242,7 @@
       "title": "Tiny Survivor",
       "subtitle": "Game Hành Động RPG Rogue-like",
       "year": 2025,
-      "period": "May 2025 – Jul 2025",
+      "period": "Tháng 5/2025 – Tháng 7/2025",
       "description": "Game hành động RPG rogue-like với hệ thống đa nhân vật, cơ chế quái vật đa dạng, hệ thống trang bị và vật phẩm thụ động, cùng cơ chế spawn quái vật thông minh — được xây dựng hoàn toàn trên Unity.",
       "myContributions": [
         "Thiết kế và xây dựng hệ thống đa nhân vật với buff, skill và phong cách chiến đấu riêng cho mỗi nhân vật.",
@@ -260,7 +260,7 @@
       "title": "BookingCare",
       "subtitle": "API Đặt Lịch Khám Bệnh Online",
       "year": 2026,
-      "period": "Apr 2026 – Hiện tại",
+      "period": "Tháng 3/2026 – Tháng 7/2026",
       "description": "Hệ thống backend API cho nền tảng đặt lịch khám bệnh online. Xây dựng theo Clean Architecture, CQRS và Event-Driven design trên ASP.NET Core 10. Hỗ trợ quản lý lịch làm việc bác sĩ, đặt lịch theo slot với kiểm tra conflict, và quản lý toàn bộ vòng đời lịch hẹn.",
       "myContributions": [
         "Thiết kế và implement Clean Architecture với quy tắc dependency nghiêm ngặt giữa các layer Domain, Application, Infrastructure và API.",
@@ -279,7 +279,7 @@
       "title": "Hair Harmony",
       "subtitle": "Hệ thống đặt lịch trực tuyến cho salon tóc",
       "year": 2024,
-      "period": "Sep 2024 – Nov 2024",
+      "period": "Tháng 9/2024 – Tháng 11/2024",
       "description": "Hair Harmony là nền tảng đặt lịch cho salon tóc, hỗ trợ khách hàng đặt lịch hẹn, chọn stylist, chọn dịch vụ và gửi đánh giá sau khi sử dụng. Nhân viên có thể quản lý lịch hẹn và hoạt động vận hành, stylist có thể theo dõi lịch làm việc và hoa hồng, trong khi chủ salon có thể theo dõi doanh thu và quản lý tài chính. Hệ thống cũng hỗ trợ xử lý dữ liệu người dùng an toàn và các nghiệp vụ liên quan đến lịch hẹn.",
       "myContributions": [
         "Xây dựng toàn bộ giao diện dashboard cho vai trò Staff, bao gồm các màn hình quản lý lịch hẹn, dịch vụ và các nghiệp vụ vận hành trong salon.",
@@ -290,6 +290,26 @@
         "Phát triển chức năng thanh toán phía backend, bao gồm logic nghiệp vụ liên quan đến thanh toán trong quy trình đặt lịch.",
         "Xây dựng API và xử lý dữ liệu thanh toán nhằm hỗ trợ theo dõi thanh toán lịch hẹn và quản lý tài chính.",
         "Phối hợp với các thành viên frontend và backend khác để đảm bảo các luồng dashboard theo vai trò hoạt động ổn định trong toàn hệ thống."
+      ]
+    },
+    {
+      "id": "spacevit",
+      "slug": "spacevit",
+      "title": "SpaceVit",
+      "subtitle": "Không Gian Họp Thông Minh Tích Hợp AI",
+      "year": 2026,
+      "period": "Tháng 9/2026 – Hiện tại",
+      "description": "Nền tảng họp thông minh tích hợp AI, cho phép ghi âm hoặc tải lên cuộc họp, chuyển giọng nói thành văn bản tiếng Việt và tiếng Anh, rồi tạo biên bản họp có cấu trúc. Xây dựng với frontend React, backend ASP.NET Core theo Clean Architecture và service speech-to-text bằng Python chạy trên GPU.",
+      "myContributions": [
+        "Xây dựng frontend bằng React 19, TypeScript, Vite, TailwindCSS và Redux Toolkit, gồm hệ thống theme theo design token với kiểm tra token và độ tương phản WCAG tự động, cùng bộ component tái sử dụng dựa trên class-variance-authority.",
+        "Implement ghi âm trực tiếp trên trình duyệt bằng Web Audio API (AudioWorklet), gửi các chunk PCM 16 kHz với cơ chế retry và xử lý chunk đến sai thứ tự.",
+        "Thiết kế backend ASP.NET Core (.NET 10) theo Clean Architecture với điều phối job bất đồng bộ và AI service có thể thay thế qua HTTP.",
+        "Xây dựng service speech-to-text bằng FastAPI với faster-whisper (Whisper large-v3-turbo), batched GPU inference và Silero VAD, hỗ trợ tiếng Việt và tiếng Anh, có job queue, theo dõi tiến độ và hủy job.",
+        "Implement transcription tăng dần cho phiên ghi âm trực tiếp, giúp có bản ghi ngay khi cuộc họp vẫn đang diễn ra.",
+        "Tích hợp Gemini API để tạo biên bản họp có cấu trúc, kèm validation, retry và giữ lại transcript khi tạo biên bản thất bại.",
+        "Implement upload dạng streaming lên đến 2 GB với shared storage giữa các service.",
+        "Triển khai bằng Docker Compose (PostgreSQL + pgvector, Redis, hỗ trợ GPU).",
+        "Viết automated test cho STT, live session và ghi âm trên trình duyệt, cùng một client simulator chạy end-to-end."
       ]
     }
   ]

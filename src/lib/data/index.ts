@@ -6,7 +6,8 @@ export type TechTag =
     | 'Cloudinary' | 'JWT' | 'WebSocket' | 'EmailJS'
     | 'Leaflet.js' | 'OpenStreetMap' | 'Redux' | 'AntD'
     | 'Firebase' | 'Recharts' | 'React-Konva' | 'DnD Kit' | 'VNPay'
-    | 'Expo' | 'Expo Camera' | 'Expo Router'
+    | 'Expo' | 'Expo Camera' | 'Expo Router' | 'Python' | 'FastAPI' | 'Whisper' | 'Gemini API' | 'pgvector'
+    | 'Web Audio API' | 'Entity Framework Core' | 'Vite'
 
 export type ProjectRole = 'FE' | 'BE' | 'Fullstack' | 'Mobile'
 export type ProjectStatus = 'live' | 'ui-only' | 'private'
@@ -157,13 +158,36 @@ export interface ProjectMeta {
 
 export const projects: ProjectMeta[] = [
     {
+        id: 'spacevit',
+        slug: 'spacevit',
+        title: 'SpaceVit',
+        subtitle: 'AI Meeting Workspace',
+        galleryType: 'desktop',
+        year: 2026,
+        period: 'Sep 2026 – Present',
+        role: ['Fullstack'],
+        tech: [
+            'ReactJS', 'TypeScript', 'TailwindCSS', 'Redux', 'Vite', 'Web Audio API',
+            'C#', 'ASP.NET', 'Entity Framework Core', 'PostgreSQL', 'pgvector', 'Redis',
+            'Python', 'FastAPI', 'Whisper', 'Gemini API', 'Docker',
+        ],
+        status: 'private',
+        images: [],
+        thumbnail: '',
+        links: {
+            github: 'https://github.com/Sang1011/SpaceVitSystem',
+            githubFE: 'https://github.com/Sang1011/SpaceVitFE',
+        },
+        featured: true,
+    },
+    {
         id: 'bookingcare',
         slug: 'bookingcare',
         title: 'BookingCare',
         subtitle: 'Online Medical Appointment Booking API',
         galleryType: 'desktop',
         year: 2026,
-        period: 'Mar 2026 – Present',
+        period: 'Mar 2026 – July 2026',
         role: ['BE'],
         tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT', 'SignalR', 'EmailJS'],
         status: 'private',
