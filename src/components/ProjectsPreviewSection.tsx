@@ -1,19 +1,14 @@
 'use client'
 
-import { getFeaturedProjects } from '@/lib/data'
+import { getFeaturedProjects, statusKey } from '@/lib/data'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useIsMobile, useTranslation } from '@/lib/hooks'
+import TeamSizeBadge from '@/components/TeamSizeBadge'
 import { arrowVariants, hoverLineVariants, itemVariants, sectionVariants } from '@/lib'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
-
-const STATUS_KEY: Record<string, 'ui.project.statusLive' | 'ui.project.statusUiOnly' | 'ui.project.statusPrivate'> = {
-    live: 'ui.project.statusLive',
-    'ui-only': 'ui.project.statusUiOnly',
-    private: 'ui.project.statusPrivate',
-}
 
 export default function ProjectsPreviewSection() {
     const { t } = useTranslation()
@@ -215,6 +210,12 @@ export default function ProjectsPreviewSection() {
                                     </div>
 
                                     {isMobile && (
+                                        <div style={{ marginTop: 2 }}>
+                                            <TeamSizeBadge teamSize={project.teamSize} />
+                                        </div>
+                                    )}
+
+                                    {isMobile && (
                                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}>
                                             <span style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)' }}>
                                                 {project.period}
@@ -224,7 +225,7 @@ export default function ProjectsPreviewSection() {
                                                 color: project.status === 'live' ? '#1400FF' : 'rgba(0,0,0,0.35)',
                                                 display: 'flex', alignItems: 'center', gap: 6,
                                             }}>
-                                                {t(STATUS_KEY[project.status])} →
+                                                {t(statusKey[project.status])} →
                                             </div>
                                         </div>
                                     )}
@@ -239,12 +240,15 @@ export default function ProjectsPreviewSection() {
                                         <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)', marginBottom: 6 }}>
                                             {project.period}
                                         </div>
+                                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 6 }}>
+                                            <TeamSizeBadge teamSize={project.teamSize} />
+                                        </div>
                                         <div style={{
                                             ...mono, fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase',
                                             color: project.status === 'live' ? '#1400FF' : 'rgba(0,0,0,0.35)',
                                             display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 8,
                                         }}>
-                                            {t(STATUS_KEY[project.status])}
+                                            {t(statusKey[project.status])}
                                             <motion.span variants={arrowVariants}>→</motion.span>
                                         </div>
                                     </motion.div>

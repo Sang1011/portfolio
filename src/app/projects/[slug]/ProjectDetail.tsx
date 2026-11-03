@@ -2,10 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { projects, statusLabel, roleLabel, getProjectBySlug } from '@/lib/data'
+import { projects, statusLabel, roleLabel, getProjectBySlug, statusKey } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import { useState } from 'react'
 import { useIsMobile, useTranslation } from '@/lib/hooks'
+import TeamSizeBadge from '@/components/TeamSizeBadge'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
@@ -156,10 +157,17 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
 
                         <div>
                             <div style={{ ...mono, fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 12 }}>
+                                {t('ui.project.teamSize')}
+                            </div>
+                            <TeamSizeBadge teamSize={project.teamSize} size="lg" intro />
+                        </div>
+
+                        <div>
+                            <div style={{ ...mono, fontSize: 12, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#1400FF', marginBottom: 12 }}>
                                 {t('ui.project.status')}
                             </div>
-                            <span style={{ ...mono, fontSize: 10, color: project.status === 'live' ? '#1400FF' : 'rgba(0,0,0,0.4)' }}>
-                                {t(project.status === 'live' ? 'ui.project.statusLive' : project.status === 'private' ? 'ui.project.statusPrivate' : 'ui.project.statusUiOnly')}
+                            <span style={{ ...mono, fontSize: 12, color: project.status === 'live' ? '#1400FF' : 'rgba(0,0,0,0.4)' }}>
+                                {t(statusKey[project.status])}
                             </span>
                         </div>
 

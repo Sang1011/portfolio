@@ -63,7 +63,7 @@ export default function ContactSection() {
                 minHeight: '70vh',
                 display: 'flex',
                 alignItems: 'center',
-                padding: '10px 48px 120px 48px',
+                padding: '40px 48px 120px 48px',
                 maxWidth: 1100,
                 margin: '0 auto',
                 position: 'relative',

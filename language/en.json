@@ -50,13 +50,17 @@
       "whatIBuilt": "What I Built",
       "techStack": "Tech Stack",
       "status": "Status",
-      "statusLive": "● Live",
+      "statusLive": "● Live Demo",
       "statusPrivate": "○ Private",
+      "statusSourceOnly": "○ Source Only",
       "statusUiOnly": "○ UI Only",
       "links": "Links",
       "liveDemo": "Live Demo",
       "prev": "Previous",
-      "next": "Next"
+      "next": "Next",
+      "teamSize": "Team Size",
+      "personalProject": "Personal Project",
+      "members": "members"
     },
     "contact": {
       "copy": "Copy",
@@ -310,6 +314,22 @@
         "Implemented streaming uploads up to 2 GB with shared storage between services.",
         "Deployed with Docker Compose (PostgreSQL + pgvector, Redis, GPU support).",
         "Added automated tests for STT, live sessions, and browser recording, plus an end-to-end client simulator."
+      ]
+    },
+    {
+      "id": "cargogrid",
+      "slug": "cargogrid",
+      "title": "CargoGrid",
+      "subtitle": "Port & Warehouse Management System",
+      "year": 2026,
+      "period": "Jun 2026 – Nov 2026",
+      "description": "CargoGrid is a backend logistics management system designed to simulate port and warehouse operations. It manages cargo tracking, storage allocation, warehouse capacity, and transportation workflows. The system features an algorithm-based allocation engine that evaluates storage locations against operational constraints and ranks suitable candidates using multiple optimization strategies. It also provides benchmarking capabilities to compare algorithm performance and allocation efficiency.",
+      "myContributions": [
+        "Developed a logistics management backend for simulating cargo tracking, warehouse operations, storage allocation, and transportation workflows.",
+        "Implemented 18 CRUD modules with Prisma ORM, database migrations, seed data, and RESTful APIs.",
+        "Developed a warehouse allocation engine using Greedy, Greedy + Local Search, and Simulated Annealing algorithms, with a six-factor scoring system to evaluate and rank storage locations.",
+        "Built an algorithm benchmarking system to compare allocation strategies based on constraint violations, movement costs, space utilization, and execution time.",
+        "Created 120 validation E2E tests and integrated Swagger for API documentation and testing."
       ]
     }
   ]

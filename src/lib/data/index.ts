@@ -7,10 +7,10 @@ export type TechTag =
     | 'Leaflet.js' | 'OpenStreetMap' | 'Redux' | 'AntD'
     | 'Firebase' | 'Recharts' | 'React-Konva' | 'DnD Kit' | 'VNPay'
     | 'Expo' | 'Expo Camera' | 'Expo Router' | 'Python' | 'FastAPI' | 'Whisper' | 'Gemini API' | 'pgvector'
-    | 'Web Audio API' | 'Entity Framework Core' | 'Vite'
+    | 'Web Audio API' | 'Entity Framework Core' | 'Vite' | 'Prisma' | 'Swagger'
 
 export type ProjectRole = 'FE' | 'BE' | 'Fullstack' | 'Mobile'
-export type ProjectStatus = 'live' | 'ui-only' | 'private'
+export type ProjectStatus = 'live' | 'source-only' | 'ui-only' | 'private'
 export type GalleryType = 'desktop' | 'mobile' | 'mixed'
 export type Locale = 'en' | 'vi'
 
@@ -145,6 +145,8 @@ export interface ProjectMeta {
     images: string[]
     thumbnail: string
     galleryType: GalleryType
+    /** Số thành viên. 1 = personal project */
+    teamSize: number
     links: {
         github?: string
         githubFE?: string
@@ -171,12 +173,32 @@ export const projects: ProjectMeta[] = [
             'C#', 'ASP.NET', 'Entity Framework Core', 'PostgreSQL', 'pgvector', 'Redis',
             'Python', 'FastAPI', 'Whisper', 'Gemini API', 'Docker',
         ],
-        status: 'private',
+        status: 'source-only',
         images: [],
         thumbnail: '',
         links: {
             github: 'https://github.com/Sang1011/SpaceVitSystem',
             githubFE: 'https://github.com/Sang1011/SpaceVitFE',
+        },
+        teamSize: 1,
+        featured: true,
+    },
+    {
+        id: 'cargogrid',
+        slug: 'cargogrid',
+        title: 'CargoGrid',
+        subtitle: 'Port & Warehouse Management System',
+        galleryType: 'desktop',
+        year: 2026,
+        period: 'Jun 2026 – Nov 2026',
+        role: ['BE'],
+        tech: ['TypeScript', 'NestJS', 'Prisma', 'PostgreSQL', 'Docker', 'Swagger'],
+        status: 'source-only',
+        images: [],
+        thumbnail: '',
+        teamSize: 1,
+        links: {
+            github: 'https://github.com/Sang1011/CargoGrid'
         },
         featured: true,
     },
@@ -190,12 +212,13 @@ export const projects: ProjectMeta[] = [
         period: 'Mar 2026 – July 2026',
         role: ['BE'],
         tech: ['C#', 'ASP.NET', 'PostgreSQL', 'Redis', 'Docker', 'JWT', 'SignalR', 'EmailJS'],
-        status: 'private',
+        status: 'source-only',
         images: [],
         thumbnail: '',
         links: {
             github: 'https://github.com/Sang1011/BookingCare',
         },
+        teamSize: 1,
         featured: true,
     },
     {
@@ -223,6 +246,7 @@ export const projects: ProjectMeta[] = [
             githubFE: 'https://github.com/Sang1011/AIPromo-Web',
             apk: 'https://apkpure.com/p/com.sangnguyen1011.aipromomobile',
         },
+        teamSize: 5,
         featured: true,
     },
     {
@@ -249,6 +273,7 @@ export const projects: ProjectMeta[] = [
             apk: 'https://apkpure.com/smart-calo/com.penta.smartcalo',
             landing: 'https://smartcalo-landingpage.vercel.app/',
         },
+        teamSize: 4,
         featured: true,
     },
     {
@@ -261,12 +286,13 @@ export const projects: ProjectMeta[] = [
         period: 'May 2025 – Jul 2025',
         role: ['Fullstack', 'Mobile'],
         tech: ['TypeScript', 'NestJS', 'MongoDB', 'Docker', 'Cloudinary', 'JWT', 'WebSocket', 'EmailJS', 'Redis'],
-        status: 'private',
+        status: 'source-only',
         images: [],
         thumbnail: '',
         links: {
             github: 'https://github.com/Sang1011/BloodDonation-BE',
         },
+        teamSize: 4,
         featured: true,
     },
     {
@@ -279,7 +305,7 @@ export const projects: ProjectMeta[] = [
         year: 2025,
         role: ['Fullstack'],
         tech: ['C#'],
-        status: 'private',
+        status: 'source-only',
         images: [
             '/projects/tiny-survivor/image.png',
         ],
@@ -287,6 +313,7 @@ export const projects: ProjectMeta[] = [
         links: {
             github: 'https://github.com/Sang1011/Tiny-Survivors',
         },
+        teamSize: 1,
         featured: true,
     },
     {
@@ -299,7 +326,7 @@ export const projects: ProjectMeta[] = [
         year: 2025,
         role: ['Fullstack'],
         tech: ['C#', 'ASP.NET', 'MongoDB', 'ReactJS'],
-        status: 'private',
+        status: 'source-only',
         images: [
             '/projects/hair-salon-booking/1.png',
             '/projects/hair-salon-booking/2.png',
@@ -311,6 +338,7 @@ export const projects: ProjectMeta[] = [
             githubFE: 'https://github.com/tranchithuan08dev/HairSalonBooking',
             github: 'https://github.com/machgiahao/HairSalonBookingApp'
         },
+        teamSize: 4,
         featured: true,
     },
 ]
@@ -327,8 +355,16 @@ export const roleLabel: Record<ProjectRole, string> = {
 export const statusLabel: Record<ProjectStatus, string> = {
     live: '● Live',
     'ui-only': '○ UI Only',
+    'source-only': '○ Source Only',
     private: '○ Private',
 }
+
+export const statusKey = {
+    live: 'ui.project.statusLive',
+    'source-only': 'ui.project.statusSourceOnly',
+    'ui-only': 'ui.project.statusUiOnly',
+    private: 'ui.project.statusPrivate',
+} as const satisfies Record<ProjectStatus, string>
 
 export const getProjectBySlug = (slug: string) =>
     projects.find((p) => p.slug === slug)

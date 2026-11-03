@@ -52,11 +52,15 @@
       "status": "Trạng thái",
       "statusLive": "● Đang hoạt động",
       "statusPrivate": "○ Riêng tư",
+      "statusSourceOnly": "○ Mã nguồn",
       "statusUiOnly": "○ Chỉ UI",
       "links": "Liên kết",
       "liveDemo": "Xem demo",
       "prev": "Trước",
-      "next": "Sau"
+      "next": "Sau",
+      "teamSize": "Quy mô nhóm",
+      "personalProject": "Dự án cá nhân",
+      "members": "thành viên"
     },
     "contact": {
       "copy": "Sao chép",
@@ -310,6 +314,22 @@
         "Implement upload dạng streaming lên đến 2 GB với shared storage giữa các service.",
         "Triển khai bằng Docker Compose (PostgreSQL + pgvector, Redis, hỗ trợ GPU).",
         "Viết automated test cho STT, live session và ghi âm trên trình duyệt, cùng một client simulator chạy end-to-end."
+      ]
+    },
+    {
+      "id": "cargogrid",
+      "slug": "cargogrid",
+      "title": "CargoGrid",
+      "subtitle": "Hệ thống quản lý cảng và kho bãi",
+      "year": 2026,
+      "period": "Tháng 6/2026 – Tháng 11/2026",
+      "description": "CargoGrid là hệ thống backend quản lý logistics, mô phỏng hoạt động vận hành cảng và kho bãi. Hệ thống hỗ trợ theo dõi vị trí hàng hóa, quản lý sức chứa kho, phân bổ vị trí lưu trữ và điều phối quá trình vận chuyển. Điểm nổi bật là bộ máy tối ưu hóa phân bổ hàng hóa, sử dụng nhiều thuật toán như Greedy, Greedy kết hợp Local Search và Simulated Annealing. Hệ thống đánh giá các vị trí lưu trữ dựa trên nhiều ràng buộc nghiệp vụ, đồng thời cung cấp công cụ benchmark để so sánh hiệu quả giữa các thuật toán.",
+      "myContributions": [
+        "Phát triển hệ thống backend quản lý logistics, mô phỏng quy trình theo dõi hàng hóa, vận hành kho bãi, phân bổ vị trí lưu trữ và điều phối vận chuyển.",
+        "Xây dựng 18 module CRUD sử dụng Prisma ORM, tích hợp RESTful API, quản lý migration và khởi tạo dữ liệu mẫu.",
+        "Phát triển bộ máy tối ưu hóa phân bổ kho bằng các thuật toán Greedy, Greedy kết hợp Local Search và Simulated Annealing, áp dụng hệ thống chấm điểm gồm 6 tiêu chí để đánh giá và xếp hạng vị trí lưu trữ.",
+        "Xây dựng hệ thống Benchmark nhằm so sánh hiệu quả các thuật toán phân bổ dựa trên mức độ vi phạm ràng buộc, chi phí di chuyển, tỷ lệ sử dụng sức chứa và thời gian thực thi.",
+        "Xây dựng 120 bài kiểm thử E2E cho các quy tắc validation và tích hợp Swagger phục vụ tài liệu hóa, kiểm thử API."
       ]
     }
   ]

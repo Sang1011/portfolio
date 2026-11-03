@@ -3,15 +3,17 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { projects } from '@/lib/data'
+import { projects, statusKey } from '@/lib/data'
 import type { ProjectRole } from '@/lib/data'
 import { useTranslation, useIsMobile } from '@/lib/hooks'
+import TeamSizeBadge from '@/components/TeamSizeBadge'
 
 const mono: React.CSSProperties = { fontFamily: 'var(--font-ibm-plex-mono), monospace' }
 const sans: React.CSSProperties = { fontFamily: 'var(--font-space-grotesk), sans-serif' }
 
 const STATUS_COLOR: Record<string, string> = {
     live: '#1400FF',
+    'source-only': 'rgba(0,0,0,0.35)',
     'ui-only': 'rgba(0,0,0,0.35)',
     private: 'rgba(0,0,0,0.35)',
 }
@@ -122,6 +124,13 @@ function ProjectRow({ project, index, t, isMobile }: {
                             ))}
                         </div>
 
+                        {/* Mobile: team size dưới tech tags */}
+                        {isMobile && (
+                            <div style={{ marginTop: 12 }}>
+                                <TeamSizeBadge teamSize={project.teamSize} active={hovered} />
+                            </div>
+                        )}
+
                         {/* Mobile: year + status inline dưới tech tags */}
                         {isMobile && (
                             <div style={{
@@ -139,11 +148,7 @@ function ProjectRow({ project, index, t, isMobile }: {
                                     color: STATUS_COLOR[project.status],
                                     display: 'flex', alignItems: 'center', gap: 6,
                                 }}>
-                                    {t(project.status === 'live'
-                                        ? 'ui.project.statusLive'
-                                        : project.status === 'private'
-                                            ? 'ui.project.statusPrivate'
-                                            : 'ui.project.statusUiOnly')} →
+                                    {t(statusKey[project.status])} →
                                 </span>
                             </div>
                         )}
@@ -155,16 +160,15 @@ function ProjectRow({ project, index, t, isMobile }: {
                             <div style={{ ...mono, fontSize: 11, color: 'rgba(0,0,0,0.52)', marginBottom: 6 }}>
                                 {project.year}
                             </div>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 6 }}>
+                                <TeamSizeBadge teamSize={project.teamSize} active={hovered} />
+                            </div>
                             <div style={{
                                 ...mono, fontSize: 10, letterSpacing: '0.3em',
                                 textTransform: 'uppercase',
                                 color: STATUS_COLOR[project.status],
                             }}>
-                                {t(project.status === 'live'
-                                    ? 'ui.project.statusLive'
-                                    : project.status === 'private'
-                                        ? 'ui.project.statusPrivate'
-                                        : 'ui.project.statusUiOnly')}
+                                {t(statusKey[project.status])}
                             </div>
                         </div>
                     )}
